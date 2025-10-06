@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "steppermotor.h": "c",
+        "chassis.h": "c",
+        "ultrasonic.h": "c",
+        "main.h": "c",
+        "pid.h": "c",
+        "stdint.h": "c"
+    }
+}

@@ -1,0 +1,354 @@
+/* USER CODE BEGIN Header */
+/**
+ ******************************************************************************
+ * @file    stm32f4xx_it.c
+ * @brief   Interrupt Service Routines.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
+/* USER CODE END Header */
+
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "stm32f4xx_it.h"
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN TD */
+extern float ms;
+extern uint32_t wait_finish;
+extern uint32_t wait_flag;
+extern float wait_sec;
+uint32_t wait_count = 0;
+uint32_t detect_flag = 2;
+extern uint32_t Stop_All_flag;
+extern enum Trace_Dir Trace_flag;
+uint32_t act_flag = 0;
+
+uint32_t Rotation_flag = 0;
+uint32_t Back_flag = 0;
+uint32_t Back_count = 0;
+uint32_t Forward_flag = 0;
+uint32_t Forward_count = 0;
+uint32_t Rotation_count = 0;
+uint32_t Left_flag = 0;
+uint32_t Left_count = 0;
+uint32_t Right_flag = 0;
+uint32_t Right_count = 0;
+uint32_t Right_dis = 100;
+uint32_t Left_dis = 100;
+uint32_t Back_dis = 100;
+uint32_t Forward_dis = 100;
+float Rotation_Degree = 100;
+
+extern volatile uint8_t Obs_index_front;
+extern volatile uint8_t Obs_index_left;
+extern volatile uint8_t Obs_index_right;
+
+extern volatile uint32_t Obs_distance_front;
+extern volatile uint32_t Obs_distance_left;
+extern volatile uint32_t Obs_distance_right;
+extern volatile uint32_t Obs_buff_front;
+extern volatile uint32_t Obs_buff_left;
+extern volatile uint32_t Obs_buff_right;
+extern volatile uint32_t Obs_data_ready;
+extern volatile uint32_t Obs_index;
+
+uint32_t current_time = 0;
+
+extern Status_ID Status;
+
+/* USER CODE END TD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
+
+/* External variables --------------------------------------------------------*/
+extern TIM_HandleTypeDef htim5;
+extern TIM_HandleTypeDef htim6;
+extern TIM_HandleTypeDef htim7;
+/* USER CODE BEGIN EV */
+
+/* USER CODE END EV */
+
+/******************************************************************************/
+/*           Cortex-M4 Processor Interruption and Exception Handlers          */
+/******************************************************************************/
+/**
+  * @brief This function handles Non maskable interrupt.
+  */
+void NMI_Handler(void)
+{
+  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+
+  /* USER CODE END NonMaskableInt_IRQn 0 */
+  /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+  while (1)
+  {
+  }
+  /* USER CODE END NonMaskableInt_IRQn 1 */
+}
+
+/**
+  * @brief This function handles Hard fault interrupt.
+  */
+void HardFault_Handler(void)
+{
+  /* USER CODE BEGIN HardFault_IRQn 0 */
+
+  /* USER CODE END HardFault_IRQn 0 */
+  while (1)
+  {
+    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+    /* USER CODE END W1_HardFault_IRQn 0 */
+  }
+}
+
+/**
+  * @brief This function handles Memory management fault.
+  */
+void MemManage_Handler(void)
+{
+  /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+
+  /* USER CODE END MemoryManagement_IRQn 0 */
+  while (1)
+  {
+    /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+    /* USER CODE END W1_MemoryManagement_IRQn 0 */
+  }
+}
+
+/**
+  * @brief This function handles Pre-fetch fault, memory access fault.
+  */
+void BusFault_Handler(void)
+{
+  /* USER CODE BEGIN BusFault_IRQn 0 */
+
+  /* USER CODE END BusFault_IRQn 0 */
+  while (1)
+  {
+    /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+    /* USER CODE END W1_BusFault_IRQn 0 */
+  }
+}
+
+/**
+  * @brief This function handles Undefined instruction or illegal state.
+  */
+void UsageFault_Handler(void)
+{
+  /* USER CODE BEGIN UsageFault_IRQn 0 */
+
+  /* USER CODE END UsageFault_IRQn 0 */
+  while (1)
+  {
+    /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+    /* USER CODE END W1_UsageFault_IRQn 0 */
+  }
+}
+
+/**
+  * @brief This function handles System service call via SWI instruction.
+  */
+void SVC_Handler(void)
+{
+  /* USER CODE BEGIN SVCall_IRQn 0 */
+
+  /* USER CODE END SVCall_IRQn 0 */
+  /* USER CODE BEGIN SVCall_IRQn 1 */
+
+  /* USER CODE END SVCall_IRQn 1 */
+}
+
+/**
+  * @brief This function handles Debug monitor.
+  */
+void DebugMon_Handler(void)
+{
+  /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+
+  /* USER CODE END DebugMonitor_IRQn 0 */
+  /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+
+  /* USER CODE END DebugMonitor_IRQn 1 */
+}
+
+/**
+  * @brief This function handles Pendable request for system service.
+  */
+void PendSV_Handler(void)
+{
+  /* USER CODE BEGIN PendSV_IRQn 0 */
+
+  /* USER CODE END PendSV_IRQn 0 */
+  /* USER CODE BEGIN PendSV_IRQn 1 */
+
+  /* USER CODE END PendSV_IRQn 1 */
+}
+
+/**
+  * @brief This function handles System tick timer.
+  */
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
+
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
+  /* USER CODE END SysTick_IRQn 1 */
+}
+
+/******************************************************************************/
+/* STM32F4xx Peripheral Interrupt Handlers                                    */
+/* Add here the Interrupt Handlers for the used peripherals.                  */
+/* For the available peripheral interrupt handler names,                      */
+/* please refer to the startup file (startup_stm32f4xx.s).                    */
+/******************************************************************************/
+
+/**
+  * @brief This function handles TIM5 global interrupt.
+  */
+void TIM5_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM5_IRQn 0 */
+
+  /* USER CODE END TIM5_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim5);
+  /* USER CODE BEGIN TIM5_IRQn 1 */
+
+  /* USER CODE END TIM5_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.
+  */
+void TIM6_DAC_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM6_DAC_IRQn 0 */
+
+  /* USER CODE END TIM6_DAC_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
+  Start_Trace();
+  //Car_Status(Status);
+  // 方向函数计时 ↓
+  if (Rotation_flag == 1)
+  {
+    Rotation_count++;
+    if (Rotation_count >= 205.0 / 180.0 * Rotation_Degree)
+    {
+      Rotation_flag = 0;
+      Rotation_count = 0;
+      Stop_All_flag = 1;
+    }
+  }
+  if (Back_flag == 1)
+  {
+    Back_count++;
+    if (Back_count >= Back_dis)
+    {
+      Back_flag = 0;
+      Back_count = 0;
+      Stop_All_flag = 1;
+    }
+  }
+  if (Forward_flag == 1)
+  {
+    Forward_count++;
+    if (Forward_count >= Forward_dis)
+    {
+      Forward_flag = 0;
+      Forward_count = 0;
+      Stop_All_flag = 1;
+    }
+  }
+  if (Left_flag == 1)
+  {
+    Left_count++;
+    if (Left_count >= Left_dis)
+    {
+      Left_flag = 0;
+      Left_count = 0;
+
+      Stop_All_flag = 1;
+    }
+  }
+  if (Right_flag == 1)
+  {
+    Right_count++;
+    if (Right_count >= Right_dis)
+    {
+      Right_flag = 0;
+      Right_count = 0;
+      Stop_All_flag = 1;
+    }
+  }
+  // 方向函数计时 ↑
+  Stop_All();
+  if (wait_flag == 1)
+  {
+    wait_count++;
+    if (wait_count >= wait_sec)
+    {
+      wait_flag = 0;
+      wait_count = 0;
+      wait_finish = 2;
+    }
+  }
+  /* USER CODE END TIM6_DAC_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM7 global interrupt.
+  */
+void TIM7_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM7_IRQn 0 */
+
+  /* USER CODE END TIM7_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim7);
+  /* USER CODE BEGIN TIM7_IRQn 1 */
+  
+  /* USER CODE END TIM7_IRQn 1 */
+}
+
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
