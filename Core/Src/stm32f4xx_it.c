@@ -31,7 +31,7 @@ extern uint32_t wait_finish;
 extern uint32_t wait_flag;
 extern float wait_sec;
 uint32_t wait_count = 0;
-uint32_t detect_flag = 2;
+detect_dir detect_flag = left_dir;
 extern uint32_t Stop_All_flag;
 extern enum Trace_Dir Trace_flag;
 uint32_t act_flag = 0;

@@ -3,6 +3,7 @@
         "pid.h": "c",
         "ultrasonic.h": "c",
         "status.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "limits": "c"
     }
 }

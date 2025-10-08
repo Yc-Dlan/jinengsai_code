@@ -14,7 +14,7 @@ extern float ms;
 extern uint32_t wait_finish;
 extern uint32_t wait_flag;
 extern float wait_sec;
-extern uint32_t detect_flag;
+extern detect_dir detect_flag;
 extern uint32_t Stop_All_flag;
 extern enum Trace_Dir Trace_flag;
 extern uint32_t act_flag;
@@ -37,15 +37,9 @@ extern float Rotation_Degree;
 
 void Car_Status(Status_ID Status)
 {
-	Start_Trace();
-    Go_Right(Right_dis);
-    Go_Left(Left_dis);
-    Go_Forward(Forward_dis);
-    Get_Back(Back_dis);
-    wait_ms(ms);
     if (Detect_Line_L(8))
     {
-        detect_flag = 1;
+        detect_flag = forward_dir;
         Trace_flag = NO;
         act_flag = 1;
         Stop_All_flag = 1;

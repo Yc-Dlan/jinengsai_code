@@ -86,6 +86,13 @@ val8 = GET_NTH_BIT(sensor_value, 8);                                            
 
 #endif
 
+typedef enum
+{
+    stop,
+	forward_dir,
+    left_dir,
+    right_dir
+} detect_dir;
 
 void Get_Sensor(unsigned int *Sensor_Front);
 float Speed_Correction(void);
