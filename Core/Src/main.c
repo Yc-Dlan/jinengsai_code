@@ -21,7 +21,7 @@
 #include "i2c.h"
 #include "tim.h"
 #include "gpio.h"
-
+#include "Status.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -34,6 +34,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+//#define Standard_foot 20 //规定单独一格迷宫的小车移动距离
+
 extern uint32_t arm_flag;
 float ms = 0;
 uint32_t wait_finish = 0;
@@ -182,6 +185,7 @@ int main(void)
     Get_Front_dis();//获取前方向超声波传感器的值，储存在Obs_distance_front
     Get_Left_dis();//获取左边超声波传感器的值，储存在Obs_distance_left
     Get_Left_dis();//获取右边超声波传感器的值，储存在Obs_distance_right
+    Obstacle_find();
     //		Go(Move_Time[0],Move_Time[1],Move_Time[2]);
     HAL_Delay(30);
   }
