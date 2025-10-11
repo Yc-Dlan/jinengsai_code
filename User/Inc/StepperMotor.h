@@ -52,6 +52,7 @@ void Set_Speed(float time, uint32_t dir);
 void Set_Motor_Pos(uint32_t *id, float *time, float Pos);
 void Set_Arm_Speed(float time, uint32_t dir);
 void Arm(void);
+void Set_Angle(float angle);
 // void Set_Motor_Pos(float time,uint32_t pos,uint32_t dir);
 
 #endif

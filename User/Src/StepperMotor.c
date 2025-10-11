@@ -18,6 +18,7 @@ extern uint32_t Rotation_flag;
 extern uint32_t arm_num;
 
 uint32_t arm_flag = 1;
+int angle;
 extern float arm_speed;
 extern uint32_t arm_dir;
 

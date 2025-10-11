@@ -56,9 +56,9 @@ extern volatile uint8_t Obs_index_front;
 extern volatile uint8_t Obs_index_left;
 extern volatile uint8_t Obs_index_right;
 
-extern volatile uint32_t Obs_distance_front;
-extern volatile uint32_t Obs_distance_left;
-extern volatile uint32_t Obs_distance_right;
+extern volatile float Obs_distance_front;
+extern volatile float Obs_distance_left;
+extern volatile float Obs_distance_right;
 extern volatile uint32_t Obs_buff_front;
 extern volatile uint32_t Obs_buff_left;
 extern volatile uint32_t Obs_buff_right;

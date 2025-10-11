@@ -7,6 +7,7 @@
 #include "stdio.h"
 #include "Status.h"
 #include "Servo.h"
+#include "Ultrasonic.h"
 
 Status_ID Status = wait;
 
@@ -21,9 +22,6 @@ extern uint32_t act_flag;
 
 extern unsigned int Sensor_Right[];
 extern unsigned int Sensor_Left[];
-extern float Obs_distance_front = 0;
-extern float Obs_distance_left = 0;
-extern float Obs_distance_right = 0;
 
 extern uint32_t Rotation_flag;
 extern uint32_t Back_flag;
@@ -40,6 +38,9 @@ extern uint32_t Left_dis;
 extern uint32_t Back_dis;
 extern uint32_t Forward_dis;
 extern float Rotation_Degree;
+extern uint32_t arm_flag;
+
+extern float angle;
 
 unsigned int Status_lib[6]={0,0,0,0,-1,0};
 //使用数组来记录小车的几个状态量，[0][1]存放当前小车经过的格数，0-前进，1-左右；[2][3]存放当前小车前进方向的障碍物情况，2-前进，3-左右；[4]存放当前位移朝向;[5]存放起点位置，0-左，1-右
@@ -59,6 +60,8 @@ void Car_Status(Status_ID Status)
     Go_Forward(Forward_dis);
     Get_Back(Back_dis);
     wait_ms(ms);
+    Set_Angle(angle);
+    Rotation_Deg(Rotation_Degree,Rotation_flag);
 
     static Status_ID current_status = wait;
     static Status_ID next_status = wait;
@@ -72,6 +75,8 @@ void Car_Status(Status_ID Status)
         Left_flag = 0;
         Right_flag = 0;
         Trace_flag = 0;
+        Rotation_flag = 0;
+        arm_flag = 0;
         cross_h = 0;
         cross_v = 0;
         obstacle_h = 0; 
@@ -102,6 +107,8 @@ void Car_Status(Status_ID Status)
             }
             break;
         }
+        Update_Status_Lib();
+        Status_lib[5] = pos_begin;
         break;
     
     case left:
@@ -116,9 +123,10 @@ void Car_Status(Status_ID Status)
                 Detect_Line_L(1);
                 cross_h++;
             }
-            move_toward = * (-1);
+            move_toward = - move_toward;
             next_status = forward;
         }
+        Update_Status_Lib();
         break;
     
     case right:
@@ -133,9 +141,10 @@ void Car_Status(Status_ID Status)
                 Detect_Line_R(1);
                 cross_h++;
             }
-            move_toward = * (-1);
+            move_toward = - move_toward;
             next_status = forward;
         }
+        Update_Status_Lib();
         break;
 
     case forward:
@@ -149,7 +158,7 @@ void Car_Status(Status_ID Status)
             Detect_Line_F(1);
             cross_v++;
         }
-        move_toward = * (-1);
+        move_toward = - move_toward;
         switch (pos_begin)
         {
         case 0:
@@ -160,6 +169,7 @@ void Car_Status(Status_ID Status)
             next_status = left;
             break;
         }
+        Update_Status_Lib();
         break;
     
     case back_step:
@@ -169,7 +179,7 @@ void Car_Status(Status_ID Status)
             Get_Back(20); //单位格子位移量
             cross_v--;
         }
-        move_toward = * (-1);
+        move_toward = - move_toward;
         if(cross_h == 7){
             switch (pos_begin)
             {
@@ -194,6 +204,7 @@ void Car_Status(Status_ID Status)
                 break;
             }
         }
+        Update_Status_Lib();
         break;
     
     case right_step:
@@ -203,13 +214,14 @@ void Car_Status(Status_ID Status)
             Go_Right(20); //单位格子位移量
             cross_h--;
         }
-        move_toward = * (-1);
+        move_toward = - move_toward;
         if(cross_v == 4){
             next_status = back_step;
         }
         else{
             next_status = forward;
         }
+        Update_Status_Lib();
         break;
     
     case left_step:
@@ -219,21 +231,37 @@ void Car_Status(Status_ID Status)
             Go_Left(20); //单位格子位移量
             cross_h--;
         }
-        move_toward = * (-1);
+        move_toward = - move_toward;
         if(cross_v == 4){
             next_status = back_step;
         }
         else{
             next_status = forward;
         }
+        Update_Status_Lib();
         break;
-    }
 
+    case throw_rotate:
+        Forward_flag = 1;
+        Go_Forward(10); /////到箱子的距离，待调整
+        Forward_flag = 0;
+        arm_flag = 1;
+        Set_Angle(111);
+        Set_Angle(-111);
+        arm_flag = 0;
+        Back_flag = 1;
+        Get_Back(10);
+        Back_flag = 0;
+        Rotation_Deg(180,0);
+        next_status = wait;
+        break;
+
+	}
     if (!(cross_h == 7 || cross_v == 4)){
         return Car_Status(next_status);
     }
     else{
-        return Car_Status(wait);
+        return Car_Status(throw_rotate);
     }
 }
 

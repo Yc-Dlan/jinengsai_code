@@ -59,6 +59,7 @@ Section Cross References
     main.o(.text.main) refers to main.o(.bss.Sensor_Left) for Sensor_Left
     main.o(.text.main) refers to main.o(.text.Get_Front_dis) for Get_Front_dis
     main.o(.text.main) refers to main.o(.text.Get_Left_dis) for Get_Left_dis
+    main.o(.text.main) refers to status.o(.text.Obstacle_find) for Obstacle_find
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     main.o(.text.SystemClock_Config) refers to memseta.o(.text) for __aeabi_memclr4
     main.o(.text.SystemClock_Config) refers to stm32f4xx_hal_rcc.o(.text.HAL_RCC_OscConfig) for HAL_RCC_OscConfig
@@ -1341,16 +1342,66 @@ Section Cross References
     ultrasonic.o(.text.Ultrasonic_Trig_right) refers to ultrasonic.o(.bss.Obs_data_ready) for Obs_data_ready
     ultrasonic.o(.text.Ultrasonic_Trig_right) refers to stm32f4xx_hal_gpio.o(.text.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     ultrasonic.o(.ARM.exidx.text.Ultrasonic_Trig_right) refers to ultrasonic.o(.text.Ultrasonic_Trig_right) for [Anonymous Symbol]
-    status.o(.text.Car_Status) refers to sensor.o(.text.Detect_Line_L) for Detect_Line_L
-    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.detect_flag) for detect_flag
-    status.o(.text.Car_Status) refers to main.o(.data.Trace_flag) for Trace_flag
-    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.act_flag) for act_flag
-    status.o(.text.Car_Status) refers to main.o(.bss.Stop_All_flag) for Stop_All_flag
-    status.o(.text.Car_Status) refers to main.o(.text.wait_fun) for wait_fun
-    status.o(.text.Car_Status) refers to sensor.o(.text.Detect_Line_F) for Detect_Line_F
+    status.o(.text.Car_Status) refers to chassis.o(.text.Start_Trace) for Start_Trace
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.Right_dis) for Right_dis
+    status.o(.text.Car_Status) refers to chassis.o(.text.Go_Right) for Go_Right
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.Left_dis) for Left_dis
+    status.o(.text.Car_Status) refers to chassis.o(.text.Go_Left) for Go_Left
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.Forward_dis) for Forward_dis
+    status.o(.text.Car_Status) refers to chassis.o(.text.Go_Forward) for Go_Forward
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.Back_dis) for Back_dis
+    status.o(.text.Car_Status) refers to chassis.o(.text.Get_Back) for Get_Back
     status.o(.text.Car_Status) refers to main.o(.bss.ms) for ms
     status.o(.text.Car_Status) refers to main.o(.text.wait_ms) for wait_ms
+    status.o(.text.Car_Status) refers to steppermotor.o(.bss.angle) for angle
+    status.o(.text.Car_Status) refers to steppermotor.o(.text.Set_Angle) for Set_Angle
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.Rotation_Degree) for Rotation_Degree
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.Rotation_flag) for Rotation_flag
+    status.o(.text.Car_Status) refers to chassis.o(.text.Rotation_Deg) for Rotation_Deg
+    status.o(.text.Car_Status) refers to status.o(.bss.Car_Status.current_status) for Car_Status.current_status
+    status.o(.text.Car_Status) refers to main.o(.bss.Stop_All_flag) for Stop_All_flag
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.Forward_flag) for Forward_flag
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.Back_flag) for Back_flag
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.Left_flag) for Left_flag
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.bss.Right_flag) for Right_flag
+    status.o(.text.Car_Status) refers to main.o(.data.Trace_flag) for Trace_flag
+    status.o(.text.Car_Status) refers to steppermotor.o(.data.arm_flag) for arm_flag
+    status.o(.text.Car_Status) refers to status.o(.bss.cross_h) for cross_h
+    status.o(.text.Car_Status) refers to status.o(.bss.cross_v) for cross_v
+    status.o(.text.Car_Status) refers to status.o(.bss.obstacle_h) for obstacle_h
+    status.o(.text.Car_Status) refers to status.o(.data.move_toward) for move_toward
+    status.o(.text.Car_Status) refers to status.o(.bss.pos_begin) for pos_begin
+    status.o(.text.Car_Status) refers to status.o(.text.Position_begin_predict) for Position_begin_predict
+    status.o(.text.Car_Status) refers to ultrasonic.o(.bss.Obs_distance_front) for Obs_distance_front
+    status.o(.text.Car_Status) refers to ultrasonic.o(.bss.Obs_distance_right) for Obs_distance_right
+    status.o(.text.Car_Status) refers to status.o(.bss.Car_Status.next_status) for Car_Status.next_status
+    status.o(.text.Car_Status) refers to ultrasonic.o(.bss.Obs_distance_left) for Obs_distance_left
+    status.o(.text.Car_Status) refers to status.o(.text.Update_Status_Lib) for Update_Status_Lib
+    status.o(.text.Car_Status) refers to status.o(.data.Status_lib) for Status_lib
+    status.o(.text.Car_Status) refers to status.o(.bss.obstacle_v) for obstacle_v
+    status.o(.text.Car_Status) refers to stm32f4xx_it.o(.data.detect_flag) for detect_flag
+    status.o(.text.Car_Status) refers to sensor.o(.text.Detect_Line_L) for Detect_Line_L
+    status.o(.text.Car_Status) refers to sensor.o(.text.Detect_Line_R) for Detect_Line_R
+    status.o(.text.Car_Status) refers to sensor.o(.text.Detect_Line_F) for Detect_Line_F
     status.o(.ARM.exidx.text.Car_Status) refers to status.o(.text.Car_Status) for [Anonymous Symbol]
+    status.o(.text.Position_begin_predict) refers to main.o(.bss.Sensor_Left) for Sensor_Left
+    status.o(.text.Position_begin_predict) refers to main.o(.bss.Sensor_Right) for Sensor_Right
+    status.o(.text.Position_begin_predict) refers to status.o(.bss.pos_begin) for pos_begin
+    status.o(.ARM.exidx.text.Position_begin_predict) refers to status.o(.text.Position_begin_predict) for [Anonymous Symbol]
+    status.o(.text.Update_Status_Lib) refers to status.o(.bss.cross_v) for cross_v
+    status.o(.text.Update_Status_Lib) refers to status.o(.data.Status_lib) for Status_lib
+    status.o(.text.Update_Status_Lib) refers to status.o(.bss.cross_h) for cross_h
+    status.o(.text.Update_Status_Lib) refers to status.o(.bss.obstacle_v) for obstacle_v
+    status.o(.text.Update_Status_Lib) refers to status.o(.bss.obstacle_h) for obstacle_h
+    status.o(.text.Update_Status_Lib) refers to status.o(.data.move_toward) for move_toward
+    status.o(.ARM.exidx.text.Update_Status_Lib) refers to status.o(.text.Update_Status_Lib) for [Anonymous Symbol]
+    status.o(.text.Obstacle_find) refers to ultrasonic.o(.bss.Obs_distance_front) for Obs_distance_front
+    status.o(.text.Obstacle_find) refers to status.o(.bss.obstacle_v) for obstacle_v
+    status.o(.text.Obstacle_find) refers to status.o(.bss.pos_begin) for pos_begin
+    status.o(.text.Obstacle_find) refers to ultrasonic.o(.bss.Obs_distance_right) for Obs_distance_right
+    status.o(.text.Obstacle_find) refers to status.o(.bss.obstacle_h) for obstacle_h
+    status.o(.text.Obstacle_find) refers to ultrasonic.o(.bss.Obs_distance_left) for Obs_distance_left
+    status.o(.ARM.exidx.text.Obstacle_find) refers to status.o(.text.Obstacle_find) for [Anonymous Symbol]
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -2351,22 +2402,33 @@ Removing Unused input sections from the image.
     Removing steppermotor.o(.ARM.exidx.text.Set_Motor_Speed), (8 bytes).
     Removing steppermotor.o(.text.Set_Angle), (352 bytes).
     Removing steppermotor.o(.ARM.exidx.text.Set_Angle), (8 bytes).
+    Removing steppermotor.o(.bss.angle), (4 bytes).
     Removing ultrasonic.o(.text), (0 bytes).
     Removing ultrasonic.o(.ARM.exidx.text.Ultrasonic_Init), (8 bytes).
     Removing ultrasonic.o(.ARM.exidx.text.Ultrasonic_Trig_front), (8 bytes).
     Removing ultrasonic.o(.ARM.exidx.text.Ultrasonic_Trig_left), (8 bytes).
     Removing ultrasonic.o(.text.Ultrasonic_Trig_right), (124 bytes).
     Removing ultrasonic.o(.ARM.exidx.text.Ultrasonic_Trig_right), (8 bytes).
-    Removing ultrasonic.o(.bss.Obs_distance_right), (4 bytes).
     Removing ultrasonic.o(.bss.pulse_time_us), (4 bytes).
     Removing ultrasonic.o(.bss.distance_cm), (4 bytes).
     Removing servo.o(.text), (0 bytes).
     Removing status.o(.text), (0 bytes).
-    Removing status.o(.text.Car_Status), (206 bytes).
+    Removing status.o(.text.Car_Status), (1784 bytes).
     Removing status.o(.ARM.exidx.text.Car_Status), (8 bytes).
+    Removing status.o(.text.Position_begin_predict), (112 bytes).
+    Removing status.o(.ARM.exidx.text.Position_begin_predict), (8 bytes).
+    Removing status.o(.text.Update_Status_Lib), (70 bytes).
+    Removing status.o(.ARM.exidx.text.Update_Status_Lib), (8 bytes).
+    Removing status.o(.ARM.exidx.text.Obstacle_find), (8 bytes).
     Removing status.o(.bss.Status), (1 bytes).
+    Removing status.o(.data.Status_lib), (24 bytes).
+    Removing status.o(.bss.cross_v), (4 bytes).
+    Removing status.o(.bss.cross_h), (4 bytes).
+    Removing status.o(.data.move_toward), (4 bytes).
+    Removing status.o(.bss.Car_Status.current_status), (1 bytes).
+    Removing status.o(.bss.Car_Status.next_status), (1 bytes).
 
-939 unused section(s) (total 81908 bytes) removed from the image.
+950 unused section(s) (total 83730 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2570,66 +2632,67 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08005348   Section        0  stm32f4xx_it.o(.text.NMI_Handler)
     NVIC_EncodePriority                      0x0800534d   Thumb Code   108  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
     [Anonymous Symbol]                       0x0800534c   Section        0  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
-    [Anonymous Symbol]                       0x080053b8   Section        0  pid.o(.text.PID_Init)
-    [Anonymous Symbol]                       0x080053f4   Section        0  stm32f4xx_it.o(.text.PendSV_Handler)
-    [Anonymous Symbol]                       0x080053f8   Section        0  stm32f4xx_it.o(.text.SVC_Handler)
-    [Anonymous Symbol]                       0x080053fc   Section        0  steppermotor.o(.text.Set_Motor_Speed)
-    [Anonymous Symbol]                       0x08005660   Section        0  sensor.o(.text.Speed_Correction)
-    [Anonymous Symbol]                       0x08005cf0   Section        0  chassis.o(.text.Start_Trace)
-    [Anonymous Symbol]                       0x08005fe8   Section        0  chassis.o(.text.Stop_All)
-    SysTick_Config                           0x08006169   Thumb Code    82  stm32f4xx_hal_cortex.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x08006168   Section        0  stm32f4xx_hal_cortex.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x080061bc   Section        0  stm32f4xx_it.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x080061c4   Section        0  main.o(.text.SystemClock_Config)
-    [Anonymous Symbol]                       0x08006280   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x08006294   Section        0  stm32f4xx_it.o(.text.TIM5_IRQHandler)
-    [Anonymous Symbol]                       0x080062a8   Section        0  stm32f4xx_it.o(.text.TIM6_DAC_IRQHandler)
-    [Anonymous Symbol]                       0x08006518   Section        0  stm32f4xx_it.o(.text.TIM7_IRQHandler)
-    [Anonymous Symbol]                       0x08006528   Section        0  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
-    [Anonymous Symbol]                       0x080066cc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
-    [Anonymous Symbol]                       0x08006704   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
-    TIM_ITRx_SetConfig                       0x08006739   Thumb Code    42  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
-    [Anonymous Symbol]                       0x08006738   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
-    TIM_OC1_SetConfig                        0x08006765   Thumb Code   234  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
-    [Anonymous Symbol]                       0x08006764   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
-    [Anonymous Symbol]                       0x08006850   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
-    TIM_OC3_SetConfig                        0x08006945   Thumb Code   242  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
-    [Anonymous Symbol]                       0x08006944   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
-    TIM_OC4_SetConfig                        0x08006a39   Thumb Code   164  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
-    [Anonymous Symbol]                       0x08006a38   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
-    TIM_TI1_ConfigInputStage                 0x08006add   Thumb Code    80  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
-    [Anonymous Symbol]                       0x08006adc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
-    [Anonymous Symbol]                       0x08006b2c   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_SetConfig)
-    TIM_TI2_ConfigInputStage                 0x08006c45   Thumb Code    82  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
-    [Anonymous Symbol]                       0x08006c44   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
-    TIM_TI2_SetConfig                        0x08006c99   Thumb Code   108  stm32f4xx_hal_tim.o(.text.TIM_TI2_SetConfig)
-    [Anonymous Symbol]                       0x08006c98   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_SetConfig)
-    TIM_TI3_SetConfig                        0x08006d05   Thumb Code   106  stm32f4xx_hal_tim.o(.text.TIM_TI3_SetConfig)
-    [Anonymous Symbol]                       0x08006d04   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI3_SetConfig)
-    TIM_TI4_SetConfig                        0x08006d71   Thumb Code   108  stm32f4xx_hal_tim.o(.text.TIM_TI4_SetConfig)
-    [Anonymous Symbol]                       0x08006d70   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI4_SetConfig)
-    [Anonymous Symbol]                       0x08006ddc   Section        0  ultrasonic.o(.text.Ultrasonic_Init)
-    [Anonymous Symbol]                       0x08006e30   Section        0  ultrasonic.o(.text.Ultrasonic_Trig_front)
-    [Anonymous Symbol]                       0x08006eac   Section        0  ultrasonic.o(.text.Ultrasonic_Trig_left)
-    [Anonymous Symbol]                       0x08006f28   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
-    __NVIC_EnableIRQ                         0x08006f2d   Thumb Code    48  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x08006f2c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
-    __NVIC_GetPriorityGrouping               0x08006f5d   Thumb Code    16  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
-    [Anonymous Symbol]                       0x08006f5c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
-    __NVIC_SetPriority                       0x08006f6d   Thumb Code    66  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08006f6c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
-    __NVIC_SetPriorityGrouping               0x08006fb1   Thumb Code    60  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
-    [Anonymous Symbol]                       0x08006fb0   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
-    [Anonymous Symbol]                       0x08006fec   Section        0  main.o(.text.main)
-    i.__scatterload_copy                     0x08007144   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08007152   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08007154   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.free                                   0x08007164   Section        0  malloc.o(i.free)
-    i.malloc                                 0x080071b4   Section        0  malloc.o(i.malloc)
+    [Anonymous Symbol]                       0x080053b8   Section        0  status.o(.text.Obstacle_find)
+    [Anonymous Symbol]                       0x08005494   Section        0  pid.o(.text.PID_Init)
+    [Anonymous Symbol]                       0x080054d0   Section        0  stm32f4xx_it.o(.text.PendSV_Handler)
+    [Anonymous Symbol]                       0x080054d4   Section        0  stm32f4xx_it.o(.text.SVC_Handler)
+    [Anonymous Symbol]                       0x080054d8   Section        0  steppermotor.o(.text.Set_Motor_Speed)
+    [Anonymous Symbol]                       0x08005740   Section        0  sensor.o(.text.Speed_Correction)
+    [Anonymous Symbol]                       0x08005dd0   Section        0  chassis.o(.text.Start_Trace)
+    [Anonymous Symbol]                       0x080060c8   Section        0  chassis.o(.text.Stop_All)
+    SysTick_Config                           0x08006249   Thumb Code    82  stm32f4xx_hal_cortex.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x08006248   Section        0  stm32f4xx_hal_cortex.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x0800629c   Section        0  stm32f4xx_it.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x080062a4   Section        0  main.o(.text.SystemClock_Config)
+    [Anonymous Symbol]                       0x08006360   Section        0  system_stm32f4xx.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x08006374   Section        0  stm32f4xx_it.o(.text.TIM5_IRQHandler)
+    [Anonymous Symbol]                       0x08006388   Section        0  stm32f4xx_it.o(.text.TIM6_DAC_IRQHandler)
+    [Anonymous Symbol]                       0x080065f8   Section        0  stm32f4xx_it.o(.text.TIM7_IRQHandler)
+    [Anonymous Symbol]                       0x08006608   Section        0  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
+    [Anonymous Symbol]                       0x080067ac   Section        0  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
+    [Anonymous Symbol]                       0x080067e4   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
+    TIM_ITRx_SetConfig                       0x08006819   Thumb Code    42  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
+    [Anonymous Symbol]                       0x08006818   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
+    TIM_OC1_SetConfig                        0x08006845   Thumb Code   234  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
+    [Anonymous Symbol]                       0x08006844   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
+    [Anonymous Symbol]                       0x08006930   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
+    TIM_OC3_SetConfig                        0x08006a25   Thumb Code   242  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
+    [Anonymous Symbol]                       0x08006a24   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
+    TIM_OC4_SetConfig                        0x08006b19   Thumb Code   164  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
+    [Anonymous Symbol]                       0x08006b18   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
+    TIM_TI1_ConfigInputStage                 0x08006bbd   Thumb Code    80  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
+    [Anonymous Symbol]                       0x08006bbc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
+    [Anonymous Symbol]                       0x08006c0c   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_SetConfig)
+    TIM_TI2_ConfigInputStage                 0x08006d25   Thumb Code    82  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
+    [Anonymous Symbol]                       0x08006d24   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
+    TIM_TI2_SetConfig                        0x08006d79   Thumb Code   108  stm32f4xx_hal_tim.o(.text.TIM_TI2_SetConfig)
+    [Anonymous Symbol]                       0x08006d78   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_SetConfig)
+    TIM_TI3_SetConfig                        0x08006de5   Thumb Code   106  stm32f4xx_hal_tim.o(.text.TIM_TI3_SetConfig)
+    [Anonymous Symbol]                       0x08006de4   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI3_SetConfig)
+    TIM_TI4_SetConfig                        0x08006e51   Thumb Code   108  stm32f4xx_hal_tim.o(.text.TIM_TI4_SetConfig)
+    [Anonymous Symbol]                       0x08006e50   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI4_SetConfig)
+    [Anonymous Symbol]                       0x08006ebc   Section        0  ultrasonic.o(.text.Ultrasonic_Init)
+    [Anonymous Symbol]                       0x08006f10   Section        0  ultrasonic.o(.text.Ultrasonic_Trig_front)
+    [Anonymous Symbol]                       0x08006f8c   Section        0  ultrasonic.o(.text.Ultrasonic_Trig_left)
+    [Anonymous Symbol]                       0x08007008   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
+    __NVIC_EnableIRQ                         0x0800700d   Thumb Code    48  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x0800700c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
+    __NVIC_GetPriorityGrouping               0x0800703d   Thumb Code    16  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
+    [Anonymous Symbol]                       0x0800703c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
+    __NVIC_SetPriority                       0x0800704d   Thumb Code    66  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x0800704c   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
+    __NVIC_SetPriorityGrouping               0x08007091   Thumb Code    60  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
+    [Anonymous Symbol]                       0x08007090   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
+    [Anonymous Symbol]                       0x080070cc   Section        0  main.o(.text.main)
+    i.__scatterload_copy                     0x08007228   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08007236   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08007238   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.free                                   0x08007248   Section        0  malloc.o(i.free)
+    i.malloc                                 0x08007298   Section        0  malloc.o(i.malloc)
     .data                                    0x20000000   Section        4  mvars.o(.data)
     .data                                    0x20000004   Section        4  mvars.o(.data)
-    HEAP                                     0x20000530   Section      512  startup_stm32f407xx.o(HEAP)
-    STACK                                    0x20000730   Section      512  startup_stm32f407xx.o(STACK)
+    HEAP                                     0x20000540   Section      512  startup_stm32f407xx.o(HEAP)
+    STACK                                    0x20000740   Section      512  startup_stm32f407xx.o(STACK)
 
     Global Symbols
 
@@ -2840,38 +2903,39 @@ Image Symbol Table
     MemManage_Handler                        0x08004fb9   Thumb Code     4  stm32f4xx_it.o(.text.MemManage_Handler)
     Motor_pid                                0x08004fc1   Thumb Code   832  pid.o(.text.Motor_pid)
     NMI_Handler                              0x08005349   Thumb Code     4  stm32f4xx_it.o(.text.NMI_Handler)
-    PID_Init                                 0x080053b9   Thumb Code    58  pid.o(.text.PID_Init)
-    PendSV_Handler                           0x080053f5   Thumb Code     2  stm32f4xx_it.o(.text.PendSV_Handler)
-    SVC_Handler                              0x080053f9   Thumb Code     2  stm32f4xx_it.o(.text.SVC_Handler)
-    Set_Motor_Speed                          0x080053fd   Thumb Code   608  steppermotor.o(.text.Set_Motor_Speed)
-    Speed_Correction                         0x08005661   Thumb Code  1600  sensor.o(.text.Speed_Correction)
-    Start_Trace                              0x08005cf1   Thumb Code   744  chassis.o(.text.Start_Trace)
-    Stop_All                                 0x08005fe9   Thumb Code   368  chassis.o(.text.Stop_All)
-    SysTick_Handler                          0x080061bd   Thumb Code     8  stm32f4xx_it.o(.text.SysTick_Handler)
-    SystemClock_Config                       0x080061c5   Thumb Code   186  main.o(.text.SystemClock_Config)
-    SystemInit                               0x08006281   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
-    TIM5_IRQHandler                          0x08006295   Thumb Code    16  stm32f4xx_it.o(.text.TIM5_IRQHandler)
-    TIM6_DAC_IRQHandler                      0x080062a9   Thumb Code   616  stm32f4xx_it.o(.text.TIM6_DAC_IRQHandler)
-    TIM7_IRQHandler                          0x08006519   Thumb Code    16  stm32f4xx_it.o(.text.TIM7_IRQHandler)
-    TIM_Base_SetConfig                       0x08006529   Thumb Code   420  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
-    TIM_CCxChannelCmd                        0x080066cd   Thumb Code    54  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
-    TIM_ETR_SetConfig                        0x08006705   Thumb Code    52  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
-    TIM_OC2_SetConfig                        0x08006851   Thumb Code   244  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
-    TIM_TI1_SetConfig                        0x08006b2d   Thumb Code   278  stm32f4xx_hal_tim.o(.text.TIM_TI1_SetConfig)
-    Ultrasonic_Init                          0x08006ddd   Thumb Code    84  ultrasonic.o(.text.Ultrasonic_Init)
-    Ultrasonic_Trig_front                    0x08006e31   Thumb Code   124  ultrasonic.o(.text.Ultrasonic_Trig_front)
-    Ultrasonic_Trig_left                     0x08006ead   Thumb Code   124  ultrasonic.o(.text.Ultrasonic_Trig_left)
-    UsageFault_Handler                       0x08006f29   Thumb Code     4  stm32f4xx_it.o(.text.UsageFault_Handler)
-    main                                     0x08006fed   Thumb Code   328  main.o(.text.main)
-    __scatterload_copy                       0x08007145   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08007153   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08007155   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    free                                     0x08007165   Thumb Code    76  malloc.o(i.free)
-    malloc                                   0x080071b5   Thumb Code    92  malloc.o(i.malloc)
-    AHBPrescTable                            0x08007220   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
-    APBPrescTable                            0x08007230   Data           8  system_stm32f4xx.o(.rodata.APBPrescTable)
-    Region$$Table$$Base                      0x08007238   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08007258   Number         0  anon$$obj.o(Region$$Table)
+    Obstacle_find                            0x080053b9   Thumb Code   218  status.o(.text.Obstacle_find)
+    PID_Init                                 0x08005495   Thumb Code    58  pid.o(.text.PID_Init)
+    PendSV_Handler                           0x080054d1   Thumb Code     2  stm32f4xx_it.o(.text.PendSV_Handler)
+    SVC_Handler                              0x080054d5   Thumb Code     2  stm32f4xx_it.o(.text.SVC_Handler)
+    Set_Motor_Speed                          0x080054d9   Thumb Code   608  steppermotor.o(.text.Set_Motor_Speed)
+    Speed_Correction                         0x08005741   Thumb Code  1600  sensor.o(.text.Speed_Correction)
+    Start_Trace                              0x08005dd1   Thumb Code   744  chassis.o(.text.Start_Trace)
+    Stop_All                                 0x080060c9   Thumb Code   368  chassis.o(.text.Stop_All)
+    SysTick_Handler                          0x0800629d   Thumb Code     8  stm32f4xx_it.o(.text.SysTick_Handler)
+    SystemClock_Config                       0x080062a5   Thumb Code   186  main.o(.text.SystemClock_Config)
+    SystemInit                               0x08006361   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
+    TIM5_IRQHandler                          0x08006375   Thumb Code    16  stm32f4xx_it.o(.text.TIM5_IRQHandler)
+    TIM6_DAC_IRQHandler                      0x08006389   Thumb Code   616  stm32f4xx_it.o(.text.TIM6_DAC_IRQHandler)
+    TIM7_IRQHandler                          0x080065f9   Thumb Code    16  stm32f4xx_it.o(.text.TIM7_IRQHandler)
+    TIM_Base_SetConfig                       0x08006609   Thumb Code   420  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
+    TIM_CCxChannelCmd                        0x080067ad   Thumb Code    54  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
+    TIM_ETR_SetConfig                        0x080067e5   Thumb Code    52  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
+    TIM_OC2_SetConfig                        0x08006931   Thumb Code   244  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
+    TIM_TI1_SetConfig                        0x08006c0d   Thumb Code   278  stm32f4xx_hal_tim.o(.text.TIM_TI1_SetConfig)
+    Ultrasonic_Init                          0x08006ebd   Thumb Code    84  ultrasonic.o(.text.Ultrasonic_Init)
+    Ultrasonic_Trig_front                    0x08006f11   Thumb Code   124  ultrasonic.o(.text.Ultrasonic_Trig_front)
+    Ultrasonic_Trig_left                     0x08006f8d   Thumb Code   124  ultrasonic.o(.text.Ultrasonic_Trig_left)
+    UsageFault_Handler                       0x08007009   Thumb Code     4  stm32f4xx_it.o(.text.UsageFault_Handler)
+    main                                     0x080070cd   Thumb Code   332  main.o(.text.main)
+    __scatterload_copy                       0x08007229   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08007237   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08007239   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    free                                     0x08007249   Thumb Code    76  malloc.o(i.free)
+    malloc                                   0x08007299   Thumb Code    92  malloc.o(i.malloc)
+    AHBPrescTable                            0x08007304   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
+    APBPrescTable                            0x08007314   Data           8  system_stm32f4xx.o(.rodata.APBPrescTable)
+    Region$$Table$$Base                      0x0800731c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800733c   Number         0  anon$$obj.o(Region$$Table)
     __microlib_freelist                      0x20000000   Data           4  mvars.o(.data)
     __microlib_freelist_initialised          0x20000004   Data           4  mvars.o(.data)
     Back_dis                                 0x20000008   Data           4  stm32f4xx_it.o(.data.Back_dis)
@@ -2900,43 +2964,47 @@ Image Symbol Table
     Obs_data_ready                           0x200000a8   Data           4  ultrasonic.o(.bss.Obs_data_ready)
     Obs_distance_front                       0x200000ac   Data           4  ultrasonic.o(.bss.Obs_distance_front)
     Obs_distance_left                        0x200000b0   Data           4  ultrasonic.o(.bss.Obs_distance_left)
-    Obs_index                                0x200000b4   Data           4  ultrasonic.o(.bss.Obs_index)
-    Obs_index_front                          0x200000b8   Data           1  ultrasonic.o(.bss.Obs_index_front)
-    Obs_index_left                           0x200000b9   Data           1  ultrasonic.o(.bss.Obs_index_left)
-    Obs_index_right                          0x200000ba   Data           1  ultrasonic.o(.bss.Obs_index_right)
-    Right_count                              0x200000bc   Data           4  stm32f4xx_it.o(.bss.Right_count)
-    Right_flag                               0x200000c0   Data           4  stm32f4xx_it.o(.bss.Right_flag)
-    Rotation_count                           0x200000c4   Data           4  stm32f4xx_it.o(.bss.Rotation_count)
-    Rotation_flag                            0x200000c8   Data           4  stm32f4xx_it.o(.bss.Rotation_flag)
-    Sensor_Front                             0x200000cc   Data          32  main.o(.bss.Sensor_Front)
-    Sensor_Left                              0x200000ec   Data          32  main.o(.bss.Sensor_Left)
-    Sensor_Right                             0x2000010c   Data          32  main.o(.bss.Sensor_Right)
-    Stop_All_flag                            0x2000012c   Data           4  main.o(.bss.Stop_All_flag)
-    V                                        0x20000130   Data           4  pid.o(.bss.V)
-    arm_num                                  0x20000134   Data           4  main.o(.bss.arm_num)
-    correction                               0x20000138   Data           4  pid.o(.bss.correction)
-    flag                                     0x2000013c   Data          16  main.o(.bss.flag)
-    hi2c1                                    0x2000014c   Data          84  i2c.o(.bss.hi2c1)
-    hi2c2                                    0x200001a0   Data          84  i2c.o(.bss.hi2c2)
-    hi2c3                                    0x200001f4   Data          84  i2c.o(.bss.hi2c3)
-    htim1                                    0x20000248   Data          72  tim.o(.bss.htim1)
-    htim12                                   0x20000290   Data          72  tim.o(.bss.htim12)
-    htim2                                    0x200002d8   Data          72  tim.o(.bss.htim2)
-    htim3                                    0x20000320   Data          72  tim.o(.bss.htim3)
-    htim4                                    0x20000368   Data          72  tim.o(.bss.htim4)
-    htim5                                    0x200003b0   Data          72  tim.o(.bss.htim5)
-    htim6                                    0x200003f8   Data          72  tim.o(.bss.htim6)
-    htim7                                    0x20000440   Data          72  tim.o(.bss.htim7)
-    htim8                                    0x20000488   Data          72  tim.o(.bss.htim8)
-    htim9                                    0x200004d0   Data          72  tim.o(.bss.htim9)
-    uwTick                                   0x20000518   Data           4  stm32f4xx_hal.o(.bss.uwTick)
-    wait_count                               0x2000051c   Data           4  stm32f4xx_it.o(.bss.wait_count)
-    wait_finish                              0x20000520   Data           4  main.o(.bss.wait_finish)
-    wait_flag                                0x20000524   Data           4  main.o(.bss.wait_flag)
-    wait_sec                                 0x20000528   Data           4  main.o(.bss.wait_sec)
-    __heap_base                              0x20000530   Data           0  startup_stm32f407xx.o(HEAP)
-    __heap_limit                             0x20000730   Data           0  startup_stm32f407xx.o(HEAP)
-    __initial_sp                             0x20000930   Data           0  startup_stm32f407xx.o(STACK)
+    Obs_distance_right                       0x200000b4   Data           4  ultrasonic.o(.bss.Obs_distance_right)
+    Obs_index                                0x200000b8   Data           4  ultrasonic.o(.bss.Obs_index)
+    Obs_index_front                          0x200000bc   Data           1  ultrasonic.o(.bss.Obs_index_front)
+    Obs_index_left                           0x200000bd   Data           1  ultrasonic.o(.bss.Obs_index_left)
+    Obs_index_right                          0x200000be   Data           1  ultrasonic.o(.bss.Obs_index_right)
+    Right_count                              0x200000c0   Data           4  stm32f4xx_it.o(.bss.Right_count)
+    Right_flag                               0x200000c4   Data           4  stm32f4xx_it.o(.bss.Right_flag)
+    Rotation_count                           0x200000c8   Data           4  stm32f4xx_it.o(.bss.Rotation_count)
+    Rotation_flag                            0x200000cc   Data           4  stm32f4xx_it.o(.bss.Rotation_flag)
+    Sensor_Front                             0x200000d0   Data          32  main.o(.bss.Sensor_Front)
+    Sensor_Left                              0x200000f0   Data          32  main.o(.bss.Sensor_Left)
+    Sensor_Right                             0x20000110   Data          32  main.o(.bss.Sensor_Right)
+    Stop_All_flag                            0x20000130   Data           4  main.o(.bss.Stop_All_flag)
+    V                                        0x20000134   Data           4  pid.o(.bss.V)
+    arm_num                                  0x20000138   Data           4  main.o(.bss.arm_num)
+    correction                               0x2000013c   Data           4  pid.o(.bss.correction)
+    flag                                     0x20000140   Data          16  main.o(.bss.flag)
+    hi2c1                                    0x20000150   Data          84  i2c.o(.bss.hi2c1)
+    hi2c2                                    0x200001a4   Data          84  i2c.o(.bss.hi2c2)
+    hi2c3                                    0x200001f8   Data          84  i2c.o(.bss.hi2c3)
+    htim1                                    0x2000024c   Data          72  tim.o(.bss.htim1)
+    htim12                                   0x20000294   Data          72  tim.o(.bss.htim12)
+    htim2                                    0x200002dc   Data          72  tim.o(.bss.htim2)
+    htim3                                    0x20000324   Data          72  tim.o(.bss.htim3)
+    htim4                                    0x2000036c   Data          72  tim.o(.bss.htim4)
+    htim5                                    0x200003b4   Data          72  tim.o(.bss.htim5)
+    htim6                                    0x200003fc   Data          72  tim.o(.bss.htim6)
+    htim7                                    0x20000444   Data          72  tim.o(.bss.htim7)
+    htim8                                    0x2000048c   Data          72  tim.o(.bss.htim8)
+    htim9                                    0x200004d4   Data          72  tim.o(.bss.htim9)
+    obstacle_h                               0x2000051c   Data           4  status.o(.bss.obstacle_h)
+    obstacle_v                               0x20000520   Data           4  status.o(.bss.obstacle_v)
+    pos_begin                                0x20000524   Data           4  status.o(.bss.pos_begin)
+    uwTick                                   0x20000528   Data           4  stm32f4xx_hal.o(.bss.uwTick)
+    wait_count                               0x2000052c   Data           4  stm32f4xx_it.o(.bss.wait_count)
+    wait_finish                              0x20000530   Data           4  main.o(.bss.wait_finish)
+    wait_flag                                0x20000534   Data           4  main.o(.bss.wait_flag)
+    wait_sec                                 0x20000538   Data           4  main.o(.bss.wait_sec)
+    __heap_base                              0x20000540   Data           0  startup_stm32f407xx.o(HEAP)
+    __heap_limit                             0x20000740   Data           0  startup_stm32f407xx.o(HEAP)
+    __initial_sp                             0x20000940   Data           0  startup_stm32f407xx.o(STACK)
 
 
 
@@ -2946,41 +3014,41 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007290, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007378, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00007258, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000733c, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x00000188   Data   RO            3    RESET               startup_stm32f407xx.o
-    0x08000188   0x08000188   0x00000000   Code   RO         1302  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000188   0x08000188   0x00000004   Code   RO         1355    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x0800018c   0x0800018c   0x00000004   Code   RO         1358    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000190   0x08000190   0x00000000   Code   RO         1360    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000190   0x08000190   0x00000000   Code   RO         1362    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000190   0x08000190   0x00000008   Code   RO         1363    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000198   0x08000198   0x00000000   Code   RO         1365    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000198   0x08000198   0x00000000   Code   RO         1367    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000198   0x08000198   0x00000004   Code   RO         1356    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000188   0x08000188   0x00000000   Code   RO         1319  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000188   0x08000188   0x00000004   Code   RO         1372    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x0800018c   0x0800018c   0x00000004   Code   RO         1375    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000190   0x08000190   0x00000000   Code   RO         1377    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000190   0x08000190   0x00000000   Code   RO         1379    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000190   0x08000190   0x00000008   Code   RO         1380    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000198   0x08000198   0x00000000   Code   RO         1382    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000198   0x08000198   0x00000000   Code   RO         1384    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000198   0x08000198   0x00000004   Code   RO         1373    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x0800019c   0x0800019c   0x00000024   Code   RO            4    .text               startup_stm32f407xx.o
-    0x080001c0   0x080001c0   0x00000062   Code   RO         1305    .text               mc_w.l(uldiv.o)
-    0x08000222   0x08000222   0x00000024   Code   RO         1307    .text               mc_w.l(memseta.o)
-    0x08000246   0x08000246   0x0000014e   Code   RO         1337    .text               mf_w.l(dadd.o)
-    0x08000394   0x08000394   0x000000e4   Code   RO         1339    .text               mf_w.l(dmul.o)
-    0x08000478   0x08000478   0x000000de   Code   RO         1341    .text               mf_w.l(ddiv.o)
-    0x08000556   0x08000556   0x00000036   Code   RO         1343    .text               mf_w.l(dcmplt.o)
-    0x0800058c   0x0800058c   0x00000036   Code   RO         1345    .text               mf_w.l(dcmpgt.o)
-    0x080005c2   0x080005c2   0x00000038   Code   RO         1347    .text               mf_w.l(dcmpeq.o)
-    0x080005fa   0x080005fa   0x0000001a   Code   RO         1349    .text               mf_w.l(dfltui.o)
-    0x08000614   0x08000614   0x00000026   Code   RO         1351    .text               mf_w.l(f2d.o)
-    0x0800063a   0x0800063a   0x00000038   Code   RO         1353    .text               mf_w.l(d2f.o)
-    0x08000672   0x08000672   0x0000001e   Code   RO         1369    .text               mc_w.l(llshl.o)
-    0x08000690   0x08000690   0x00000020   Code   RO         1371    .text               mc_w.l(llushr.o)
-    0x080006b0   0x080006b0   0x00000024   Code   RO         1373    .text               mc_w.l(llsshr.o)
-    0x080006d4   0x080006d4   0x00000000   Code   RO         1381    .text               mc_w.l(iusefp.o)
-    0x080006d4   0x080006d4   0x0000006e   Code   RO         1382    .text               mf_w.l(fepilogue.o)
-    0x08000742   0x08000742   0x000000ba   Code   RO         1384    .text               mf_w.l(depilogue.o)
-    0x080007fc   0x080007fc   0x00000030   Code   RO         1386    .text               mc_w.l(init.o)
+    0x080001c0   0x080001c0   0x00000062   Code   RO         1322    .text               mc_w.l(uldiv.o)
+    0x08000222   0x08000222   0x00000024   Code   RO         1324    .text               mc_w.l(memseta.o)
+    0x08000246   0x08000246   0x0000014e   Code   RO         1354    .text               mf_w.l(dadd.o)
+    0x08000394   0x08000394   0x000000e4   Code   RO         1356    .text               mf_w.l(dmul.o)
+    0x08000478   0x08000478   0x000000de   Code   RO         1358    .text               mf_w.l(ddiv.o)
+    0x08000556   0x08000556   0x00000036   Code   RO         1360    .text               mf_w.l(dcmplt.o)
+    0x0800058c   0x0800058c   0x00000036   Code   RO         1362    .text               mf_w.l(dcmpgt.o)
+    0x080005c2   0x080005c2   0x00000038   Code   RO         1364    .text               mf_w.l(dcmpeq.o)
+    0x080005fa   0x080005fa   0x0000001a   Code   RO         1366    .text               mf_w.l(dfltui.o)
+    0x08000614   0x08000614   0x00000026   Code   RO         1368    .text               mf_w.l(f2d.o)
+    0x0800063a   0x0800063a   0x00000038   Code   RO         1370    .text               mf_w.l(d2f.o)
+    0x08000672   0x08000672   0x0000001e   Code   RO         1386    .text               mc_w.l(llshl.o)
+    0x08000690   0x08000690   0x00000020   Code   RO         1388    .text               mc_w.l(llushr.o)
+    0x080006b0   0x080006b0   0x00000024   Code   RO         1390    .text               mc_w.l(llsshr.o)
+    0x080006d4   0x080006d4   0x00000000   Code   RO         1398    .text               mc_w.l(iusefp.o)
+    0x080006d4   0x080006d4   0x0000006e   Code   RO         1399    .text               mf_w.l(fepilogue.o)
+    0x08000742   0x08000742   0x000000ba   Code   RO         1401    .text               mf_w.l(depilogue.o)
+    0x080007fc   0x080007fc   0x00000030   Code   RO         1403    .text               mc_w.l(init.o)
     0x0800082c   0x0800082c   0x00000004   Code   RO          139    .text.BusFault_Handler  stm32f4xx_it.o
     0x08000830   0x08000830   0x00000002   Code   RO          145    .text.DebugMon_Handler  stm32f4xx_it.o
     0x08000832   0x08000832   0x00000002   PAD
@@ -3101,89 +3169,92 @@ Memory Map of the image
     0x08004fc0   0x08004fc0   0x00000388   Code   RO         1223    .text.Motor_pid     pid.o
     0x08005348   0x08005348   0x00000004   Code   RO          133    .text.NMI_Handler   stm32f4xx_it.o
     0x0800534c   0x0800534c   0x0000006c   Code   RO          645    .text.NVIC_EncodePriority  stm32f4xx_hal_cortex.o
-    0x080053b8   0x080053b8   0x0000003a   Code   RO         1221    .text.PID_Init      pid.o
-    0x080053f2   0x080053f2   0x00000002   PAD
-    0x080053f4   0x080053f4   0x00000002   Code   RO          147    .text.PendSV_Handler  stm32f4xx_it.o
-    0x080053f6   0x080053f6   0x00000002   PAD
-    0x080053f8   0x080053f8   0x00000002   Code   RO          143    .text.SVC_Handler   stm32f4xx_it.o
-    0x080053fa   0x080053fa   0x00000002   PAD
-    0x080053fc   0x080053fc   0x00000264   Code   RO         1253    .text.Set_Motor_Speed  steppermotor.o
-    0x08005660   0x08005660   0x00000690   Code   RO         1236    .text.Speed_Correction  sensor.o
-    0x08005cf0   0x08005cf0   0x000002f8   Code   RO         1157    .text.Start_Trace   chassis.o
-    0x08005fe8   0x08005fe8   0x00000180   Code   RO         1155    .text.Stop_All      chassis.o
-    0x08006168   0x08006168   0x00000052   Code   RO          661    .text.SysTick_Config  stm32f4xx_hal_cortex.o
-    0x080061ba   0x080061ba   0x00000002   PAD
-    0x080061bc   0x080061bc   0x00000008   Code   RO          149    .text.SysTick_Handler  stm32f4xx_it.o
-    0x080061c4   0x080061c4   0x000000ba   Code   RO           13    .text.SystemClock_Config  main.o
-    0x0800627e   0x0800627e   0x00000002   PAD
-    0x08006280   0x08006280   0x00000012   Code   RO         1137    .text.SystemInit    system_stm32f4xx.o
-    0x08006292   0x08006292   0x00000002   PAD
-    0x08006294   0x08006294   0x00000010   Code   RO          151    .text.TIM5_IRQHandler  stm32f4xx_it.o
-    0x080062a4   0x080062a4   0x00000004   PAD
-    0x080062a8   0x080062a8   0x00000270   Code   RO          153    .text.TIM6_DAC_IRQHandler  stm32f4xx_it.o
-    0x08006518   0x08006518   0x00000010   Code   RO          155    .text.TIM7_IRQHandler  stm32f4xx_it.o
-    0x08006528   0x08006528   0x000001a4   Code   RO          805    .text.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
-    0x080066cc   0x080066cc   0x00000036   Code   RO          839    .text.TIM_CCxChannelCmd  stm32f4xx_hal_tim.o
-    0x08006702   0x08006702   0x00000002   PAD
-    0x08006704   0x08006704   0x00000034   Code   RO          991    .text.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
-    0x08006738   0x08006738   0x0000002a   Code   RO          997    .text.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
-    0x08006762   0x08006762   0x00000002   PAD
-    0x08006764   0x08006764   0x000000ea   Code   RO          949    .text.TIM_OC1_SetConfig  stm32f4xx_hal_tim.o
-    0x0800684e   0x0800684e   0x00000002   PAD
-    0x08006850   0x08006850   0x000000f4   Code   RO          951    .text.TIM_OC2_SetConfig  stm32f4xx_hal_tim.o
-    0x08006944   0x08006944   0x000000f2   Code   RO          953    .text.TIM_OC3_SetConfig  stm32f4xx_hal_tim.o
-    0x08006a36   0x08006a36   0x00000002   PAD
-    0x08006a38   0x08006a38   0x000000a4   Code   RO          955    .text.TIM_OC4_SetConfig  stm32f4xx_hal_tim.o
-    0x08006adc   0x08006adc   0x00000050   Code   RO          995    .text.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x08006b2c   0x08006b2c   0x00000116   Code   RO          959    .text.TIM_TI1_SetConfig  stm32f4xx_hal_tim.o
-    0x08006c42   0x08006c42   0x00000002   PAD
-    0x08006c44   0x08006c44   0x00000052   Code   RO          999    .text.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x08006c96   0x08006c96   0x00000002   PAD
-    0x08006c98   0x08006c98   0x0000006c   Code   RO          961    .text.TIM_TI2_SetConfig  stm32f4xx_hal_tim.o
-    0x08006d04   0x08006d04   0x0000006a   Code   RO          963    .text.TIM_TI3_SetConfig  stm32f4xx_hal_tim.o
-    0x08006d6e   0x08006d6e   0x00000002   PAD
-    0x08006d70   0x08006d70   0x0000006c   Code   RO          965    .text.TIM_TI4_SetConfig  stm32f4xx_hal_tim.o
-    0x08006ddc   0x08006ddc   0x00000054   Code   RO         1265    .text.Ultrasonic_Init  ultrasonic.o
-    0x08006e30   0x08006e30   0x0000007c   Code   RO         1267    .text.Ultrasonic_Trig_front  ultrasonic.o
-    0x08006eac   0x08006eac   0x0000007c   Code   RO         1269    .text.Ultrasonic_Trig_left  ultrasonic.o
-    0x08006f28   0x08006f28   0x00000004   Code   RO          141    .text.UsageFault_Handler  stm32f4xx_it.o
-    0x08006f2c   0x08006f2c   0x00000030   Code   RO          649    .text.__NVIC_EnableIRQ  stm32f4xx_hal_cortex.o
-    0x08006f5c   0x08006f5c   0x00000010   Code   RO          641    .text.__NVIC_GetPriorityGrouping  stm32f4xx_hal_cortex.o
-    0x08006f6c   0x08006f6c   0x00000042   Code   RO          643    .text.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
-    0x08006fae   0x08006fae   0x00000002   PAD
-    0x08006fb0   0x08006fb0   0x0000003c   Code   RO          637    .text.__NVIC_SetPriorityGrouping  stm32f4xx_hal_cortex.o
-    0x08006fec   0x08006fec   0x00000158   Code   RO           11    .text.main          main.o
-    0x08007144   0x08007144   0x0000000e   Code   RO         1390    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08007152   0x08007152   0x00000002   Code   RO         1391    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08007154   0x08007154   0x0000000e   Code   RO         1392    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08007162   0x08007162   0x00000002   PAD
-    0x08007164   0x08007164   0x00000050   Code   RO         1309    i.free              mc_w.l(malloc.o)
-    0x080071b4   0x080071b4   0x0000006c   Code   RO         1310    i.malloc            mc_w.l(malloc.o)
-    0x08007220   0x08007220   0x00000010   Data   RO         1142    .rodata.AHBPrescTable  system_stm32f4xx.o
-    0x08007230   0x08007230   0x00000008   Data   RO         1143    .rodata.APBPrescTable  system_stm32f4xx.o
-    0x08007238   0x08007238   0x00000020   Data   RO         1389    Region$$Table       anon$$obj.o
+    0x080053b8   0x080053b8   0x000000da   Code   RO         1301    .text.Obstacle_find  status.o
+    0x08005492   0x08005492   0x00000002   PAD
+    0x08005494   0x08005494   0x0000003a   Code   RO         1221    .text.PID_Init      pid.o
+    0x080054ce   0x080054ce   0x00000002   PAD
+    0x080054d0   0x080054d0   0x00000002   Code   RO          147    .text.PendSV_Handler  stm32f4xx_it.o
+    0x080054d2   0x080054d2   0x00000002   PAD
+    0x080054d4   0x080054d4   0x00000002   Code   RO          143    .text.SVC_Handler   stm32f4xx_it.o
+    0x080054d6   0x080054d6   0x00000002   PAD
+    0x080054d8   0x080054d8   0x00000264   Code   RO         1253    .text.Set_Motor_Speed  steppermotor.o
+    0x0800573c   0x0800573c   0x00000004   PAD
+    0x08005740   0x08005740   0x00000690   Code   RO         1236    .text.Speed_Correction  sensor.o
+    0x08005dd0   0x08005dd0   0x000002f8   Code   RO         1157    .text.Start_Trace   chassis.o
+    0x080060c8   0x080060c8   0x00000180   Code   RO         1155    .text.Stop_All      chassis.o
+    0x08006248   0x08006248   0x00000052   Code   RO          661    .text.SysTick_Config  stm32f4xx_hal_cortex.o
+    0x0800629a   0x0800629a   0x00000002   PAD
+    0x0800629c   0x0800629c   0x00000008   Code   RO          149    .text.SysTick_Handler  stm32f4xx_it.o
+    0x080062a4   0x080062a4   0x000000ba   Code   RO           13    .text.SystemClock_Config  main.o
+    0x0800635e   0x0800635e   0x00000002   PAD
+    0x08006360   0x08006360   0x00000012   Code   RO         1137    .text.SystemInit    system_stm32f4xx.o
+    0x08006372   0x08006372   0x00000002   PAD
+    0x08006374   0x08006374   0x00000010   Code   RO          151    .text.TIM5_IRQHandler  stm32f4xx_it.o
+    0x08006384   0x08006384   0x00000004   PAD
+    0x08006388   0x08006388   0x00000270   Code   RO          153    .text.TIM6_DAC_IRQHandler  stm32f4xx_it.o
+    0x080065f8   0x080065f8   0x00000010   Code   RO          155    .text.TIM7_IRQHandler  stm32f4xx_it.o
+    0x08006608   0x08006608   0x000001a4   Code   RO          805    .text.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
+    0x080067ac   0x080067ac   0x00000036   Code   RO          839    .text.TIM_CCxChannelCmd  stm32f4xx_hal_tim.o
+    0x080067e2   0x080067e2   0x00000002   PAD
+    0x080067e4   0x080067e4   0x00000034   Code   RO          991    .text.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
+    0x08006818   0x08006818   0x0000002a   Code   RO          997    .text.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
+    0x08006842   0x08006842   0x00000002   PAD
+    0x08006844   0x08006844   0x000000ea   Code   RO          949    .text.TIM_OC1_SetConfig  stm32f4xx_hal_tim.o
+    0x0800692e   0x0800692e   0x00000002   PAD
+    0x08006930   0x08006930   0x000000f4   Code   RO          951    .text.TIM_OC2_SetConfig  stm32f4xx_hal_tim.o
+    0x08006a24   0x08006a24   0x000000f2   Code   RO          953    .text.TIM_OC3_SetConfig  stm32f4xx_hal_tim.o
+    0x08006b16   0x08006b16   0x00000002   PAD
+    0x08006b18   0x08006b18   0x000000a4   Code   RO          955    .text.TIM_OC4_SetConfig  stm32f4xx_hal_tim.o
+    0x08006bbc   0x08006bbc   0x00000050   Code   RO          995    .text.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x08006c0c   0x08006c0c   0x00000116   Code   RO          959    .text.TIM_TI1_SetConfig  stm32f4xx_hal_tim.o
+    0x08006d22   0x08006d22   0x00000002   PAD
+    0x08006d24   0x08006d24   0x00000052   Code   RO          999    .text.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x08006d76   0x08006d76   0x00000002   PAD
+    0x08006d78   0x08006d78   0x0000006c   Code   RO          961    .text.TIM_TI2_SetConfig  stm32f4xx_hal_tim.o
+    0x08006de4   0x08006de4   0x0000006a   Code   RO          963    .text.TIM_TI3_SetConfig  stm32f4xx_hal_tim.o
+    0x08006e4e   0x08006e4e   0x00000002   PAD
+    0x08006e50   0x08006e50   0x0000006c   Code   RO          965    .text.TIM_TI4_SetConfig  stm32f4xx_hal_tim.o
+    0x08006ebc   0x08006ebc   0x00000054   Code   RO         1266    .text.Ultrasonic_Init  ultrasonic.o
+    0x08006f10   0x08006f10   0x0000007c   Code   RO         1268    .text.Ultrasonic_Trig_front  ultrasonic.o
+    0x08006f8c   0x08006f8c   0x0000007c   Code   RO         1270    .text.Ultrasonic_Trig_left  ultrasonic.o
+    0x08007008   0x08007008   0x00000004   Code   RO          141    .text.UsageFault_Handler  stm32f4xx_it.o
+    0x0800700c   0x0800700c   0x00000030   Code   RO          649    .text.__NVIC_EnableIRQ  stm32f4xx_hal_cortex.o
+    0x0800703c   0x0800703c   0x00000010   Code   RO          641    .text.__NVIC_GetPriorityGrouping  stm32f4xx_hal_cortex.o
+    0x0800704c   0x0800704c   0x00000042   Code   RO          643    .text.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
+    0x0800708e   0x0800708e   0x00000002   PAD
+    0x08007090   0x08007090   0x0000003c   Code   RO          637    .text.__NVIC_SetPriorityGrouping  stm32f4xx_hal_cortex.o
+    0x080070cc   0x080070cc   0x0000015c   Code   RO           11    .text.main          main.o
+    0x08007228   0x08007228   0x0000000e   Code   RO         1407    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08007236   0x08007236   0x00000002   Code   RO         1408    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08007238   0x08007238   0x0000000e   Code   RO         1409    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08007246   0x08007246   0x00000002   PAD
+    0x08007248   0x08007248   0x00000050   Code   RO         1326    i.free              mc_w.l(malloc.o)
+    0x08007298   0x08007298   0x0000006c   Code   RO         1327    i.malloc            mc_w.l(malloc.o)
+    0x08007304   0x08007304   0x00000010   Data   RO         1142    .rodata.AHBPrescTable  system_stm32f4xx.o
+    0x08007314   0x08007314   0x00000008   Data   RO         1143    .rodata.APBPrescTable  system_stm32f4xx.o
+    0x0800731c   0x0800731c   0x00000020   Data   RO         1406    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08007258, Size: 0x00000930, Max: 0x0001c000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08007340, Size: 0x00000940, Max: 0x0001c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08007258   0x00000004   Data   RW         1379    .data               mc_w.l(mvars.o)
-    0x20000004   0x0800725c   0x00000004   Data   RW         1380    .data               mc_w.l(mvars.o)
-    0x20000008   0x08007260   0x00000004   Data   RW          172    .data.Back_dis      stm32f4xx_it.o
-    0x2000000c   0x08007264   0x00000004   Data   RW           51    .data.Car_Speed     main.o
-    0x20000010   0x08007268   0x00000004   Data   RW          173    .data.Forward_dis   stm32f4xx_it.o
-    0x20000014   0x0800726c   0x00000004   Data   RW          171    .data.Left_dis      stm32f4xx_it.o
-    0x20000018   0x08007270   0x00000004   Data   RW          170    .data.Right_dis     stm32f4xx_it.o
-    0x2000001c   0x08007274   0x00000004   Data   RW          174    .data.Rotation_Degree  stm32f4xx_it.o
-    0x20000020   0x08007278   0x00000004   Data   RW         1141    .data.SystemCoreClock  system_stm32f4xx.o
-    0x20000024   0x0800727c   0x00000001   Data   RW           47    .data.Trace_flag    main.o
-    0x20000025   0x0800727d   0x00000003   PAD
-    0x20000028   0x08007280   0x00000004   Data   RW         1257    .data.arm_flag      steppermotor.o
-    0x2000002c   0x08007284   0x00000001   Data   RW          767    .data.uwTickFreq    stm32f4xx_hal.o
-    0x2000002d   0x08007285   0x00000003   PAD
-    0x20000030   0x08007288   0x00000004   Data   RW          766    .data.uwTickPrio    stm32f4xx_hal.o
-    0x20000034   0x0800728c   0x00000004   PAD
+    0x20000000   0x08007340   0x00000004   Data   RW         1396    .data               mc_w.l(mvars.o)
+    0x20000004   0x08007344   0x00000004   Data   RW         1397    .data               mc_w.l(mvars.o)
+    0x20000008   0x08007348   0x00000004   Data   RW          172    .data.Back_dis      stm32f4xx_it.o
+    0x2000000c   0x0800734c   0x00000004   Data   RW           51    .data.Car_Speed     main.o
+    0x20000010   0x08007350   0x00000004   Data   RW          173    .data.Forward_dis   stm32f4xx_it.o
+    0x20000014   0x08007354   0x00000004   Data   RW          171    .data.Left_dis      stm32f4xx_it.o
+    0x20000018   0x08007358   0x00000004   Data   RW          170    .data.Right_dis     stm32f4xx_it.o
+    0x2000001c   0x0800735c   0x00000004   Data   RW          174    .data.Rotation_Degree  stm32f4xx_it.o
+    0x20000020   0x08007360   0x00000004   Data   RW         1141    .data.SystemCoreClock  system_stm32f4xx.o
+    0x20000024   0x08007364   0x00000001   Data   RW           47    .data.Trace_flag    main.o
+    0x20000025   0x08007365   0x00000003   PAD
+    0x20000028   0x08007368   0x00000004   Data   RW         1257    .data.arm_flag      steppermotor.o
+    0x2000002c   0x0800736c   0x00000001   Data   RW          767    .data.uwTickFreq    stm32f4xx_hal.o
+    0x2000002d   0x0800736d   0x00000003   PAD
+    0x20000030   0x08007370   0x00000004   Data   RW          766    .data.uwTickPrio    stm32f4xx_hal.o
+    0x20000034   0x08007374   0x00000004   PAD
     0x20000038        -       0x00000004   Zero   RW          162    .bss.Back_count     stm32f4xx_it.o
     0x2000003c        -       0x00000004   Zero   RW          161    .bss.Back_flag      stm32f4xx_it.o
     0x20000040        -       0x0000002c   Zero   RW           52    .bss.Car_pid        main.o
@@ -3193,53 +3264,57 @@ Memory Map of the image
     0x20000078        -       0x00000004   Zero   RW          166    .bss.Left_flag      stm32f4xx_it.o
     0x2000007c        -       0x00000014   Zero   RW         1170    .bss.Motor_V        chassis.o
     0x20000090        -       0x0000000c   Zero   RW           39    .bss.Move_Time      main.o
-    0x2000009c        -       0x00000004   Zero   RW         1279    .bss.Obs_buff_front  ultrasonic.o
-    0x200000a0        -       0x00000004   Zero   RW         1280    .bss.Obs_buff_left  ultrasonic.o
-    0x200000a4        -       0x00000004   Zero   RW         1281    .bss.Obs_buff_right  ultrasonic.o
-    0x200000a8        -       0x00000004   Zero   RW         1282    .bss.Obs_data_ready  ultrasonic.o
-    0x200000ac        -       0x00000004   Zero   RW         1276    .bss.Obs_distance_front  ultrasonic.o
-    0x200000b0        -       0x00000004   Zero   RW         1277    .bss.Obs_distance_left  ultrasonic.o
-    0x200000b4        -       0x00000004   Zero   RW         1283    .bss.Obs_index      ultrasonic.o
-    0x200000b8        -       0x00000001   Zero   RW         1273    .bss.Obs_index_front  ultrasonic.o
-    0x200000b9        -       0x00000001   Zero   RW         1274    .bss.Obs_index_left  ultrasonic.o
-    0x200000ba        -       0x00000001   Zero   RW         1275    .bss.Obs_index_right  ultrasonic.o
-    0x200000bb   0x0800728c   0x00000001   PAD
-    0x200000bc        -       0x00000004   Zero   RW          169    .bss.Right_count    stm32f4xx_it.o
-    0x200000c0        -       0x00000004   Zero   RW          168    .bss.Right_flag     stm32f4xx_it.o
-    0x200000c4        -       0x00000004   Zero   RW          165    .bss.Rotation_count  stm32f4xx_it.o
-    0x200000c8        -       0x00000004   Zero   RW          160    .bss.Rotation_flag  stm32f4xx_it.o
-    0x200000cc        -       0x00000020   Zero   RW           40    .bss.Sensor_Front   main.o
-    0x200000ec        -       0x00000020   Zero   RW           42    .bss.Sensor_Left    main.o
-    0x2000010c        -       0x00000020   Zero   RW           41    .bss.Sensor_Right   main.o
-    0x2000012c        -       0x00000004   Zero   RW           38    .bss.Stop_All_flag  main.o
-    0x20000130        -       0x00000004   Zero   RW         1226    .bss.V              pid.o
-    0x20000134        -       0x00000004   Zero   RW           33    .bss.arm_num        main.o
-    0x20000138        -       0x00000004   Zero   RW         1225    .bss.correction     pid.o
-    0x2000013c        -       0x00000010   Zero   RW           48    .bss.flag           main.o
-    0x2000014c        -       0x00000054   Zero   RW           80    .bss.hi2c1          i2c.o
-    0x200001a0        -       0x00000054   Zero   RW           81    .bss.hi2c2          i2c.o
-    0x200001f4        -       0x00000054   Zero   RW           82    .bss.hi2c3          i2c.o
-    0x20000248        -       0x00000048   Zero   RW          116    .bss.htim1          tim.o
-    0x20000290        -       0x00000048   Zero   RW          125    .bss.htim12         tim.o
-    0x200002d8        -       0x00000048   Zero   RW          117    .bss.htim2          tim.o
-    0x20000320        -       0x00000048   Zero   RW          118    .bss.htim3          tim.o
-    0x20000368        -       0x00000048   Zero   RW          119    .bss.htim4          tim.o
-    0x200003b0        -       0x00000048   Zero   RW          120    .bss.htim5          tim.o
-    0x200003f8        -       0x00000048   Zero   RW          121    .bss.htim6          tim.o
-    0x20000440        -       0x00000048   Zero   RW          122    .bss.htim7          tim.o
-    0x20000488        -       0x00000048   Zero   RW          123    .bss.htim8          tim.o
-    0x200004d0        -       0x00000048   Zero   RW          124    .bss.htim9          tim.o
-    0x20000518        -       0x00000004   Zero   RW          768    .bss.uwTick         stm32f4xx_hal.o
-    0x2000051c        -       0x00000004   Zero   RW          157    .bss.wait_count     stm32f4xx_it.o
-    0x20000520        -       0x00000004   Zero   RW           30    .bss.wait_finish    main.o
-    0x20000524        -       0x00000004   Zero   RW           31    .bss.wait_flag      main.o
-    0x20000528        -       0x00000004   Zero   RW           32    .bss.wait_sec       main.o
-    0x2000052c   0x0800728c   0x00000004   PAD
-    0x20000530        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f407xx.o
-    0x20000730        -       0x00000200   Zero   RW            1    STACK               startup_stm32f407xx.o
+    0x2000009c        -       0x00000004   Zero   RW         1280    .bss.Obs_buff_front  ultrasonic.o
+    0x200000a0        -       0x00000004   Zero   RW         1281    .bss.Obs_buff_left  ultrasonic.o
+    0x200000a4        -       0x00000004   Zero   RW         1282    .bss.Obs_buff_right  ultrasonic.o
+    0x200000a8        -       0x00000004   Zero   RW         1283    .bss.Obs_data_ready  ultrasonic.o
+    0x200000ac        -       0x00000004   Zero   RW         1277    .bss.Obs_distance_front  ultrasonic.o
+    0x200000b0        -       0x00000004   Zero   RW         1278    .bss.Obs_distance_left  ultrasonic.o
+    0x200000b4        -       0x00000004   Zero   RW         1279    .bss.Obs_distance_right  ultrasonic.o
+    0x200000b8        -       0x00000004   Zero   RW         1284    .bss.Obs_index      ultrasonic.o
+    0x200000bc        -       0x00000001   Zero   RW         1274    .bss.Obs_index_front  ultrasonic.o
+    0x200000bd        -       0x00000001   Zero   RW         1275    .bss.Obs_index_left  ultrasonic.o
+    0x200000be        -       0x00000001   Zero   RW         1276    .bss.Obs_index_right  ultrasonic.o
+    0x200000bf   0x08007374   0x00000001   PAD
+    0x200000c0        -       0x00000004   Zero   RW          169    .bss.Right_count    stm32f4xx_it.o
+    0x200000c4        -       0x00000004   Zero   RW          168    .bss.Right_flag     stm32f4xx_it.o
+    0x200000c8        -       0x00000004   Zero   RW          165    .bss.Rotation_count  stm32f4xx_it.o
+    0x200000cc        -       0x00000004   Zero   RW          160    .bss.Rotation_flag  stm32f4xx_it.o
+    0x200000d0        -       0x00000020   Zero   RW           40    .bss.Sensor_Front   main.o
+    0x200000f0        -       0x00000020   Zero   RW           42    .bss.Sensor_Left    main.o
+    0x20000110        -       0x00000020   Zero   RW           41    .bss.Sensor_Right   main.o
+    0x20000130        -       0x00000004   Zero   RW           38    .bss.Stop_All_flag  main.o
+    0x20000134        -       0x00000004   Zero   RW         1226    .bss.V              pid.o
+    0x20000138        -       0x00000004   Zero   RW           33    .bss.arm_num        main.o
+    0x2000013c        -       0x00000004   Zero   RW         1225    .bss.correction     pid.o
+    0x20000140        -       0x00000010   Zero   RW           48    .bss.flag           main.o
+    0x20000150        -       0x00000054   Zero   RW           80    .bss.hi2c1          i2c.o
+    0x200001a4        -       0x00000054   Zero   RW           81    .bss.hi2c2          i2c.o
+    0x200001f8        -       0x00000054   Zero   RW           82    .bss.hi2c3          i2c.o
+    0x2000024c        -       0x00000048   Zero   RW          116    .bss.htim1          tim.o
+    0x20000294        -       0x00000048   Zero   RW          125    .bss.htim12         tim.o
+    0x200002dc        -       0x00000048   Zero   RW          117    .bss.htim2          tim.o
+    0x20000324        -       0x00000048   Zero   RW          118    .bss.htim3          tim.o
+    0x2000036c        -       0x00000048   Zero   RW          119    .bss.htim4          tim.o
+    0x200003b4        -       0x00000048   Zero   RW          120    .bss.htim5          tim.o
+    0x200003fc        -       0x00000048   Zero   RW          121    .bss.htim6          tim.o
+    0x20000444        -       0x00000048   Zero   RW          122    .bss.htim7          tim.o
+    0x2000048c        -       0x00000048   Zero   RW          123    .bss.htim8          tim.o
+    0x200004d4        -       0x00000048   Zero   RW          124    .bss.htim9          tim.o
+    0x2000051c        -       0x00000004   Zero   RW         1308    .bss.obstacle_h     status.o
+    0x20000520        -       0x00000004   Zero   RW         1307    .bss.obstacle_v     status.o
+    0x20000524        -       0x00000004   Zero   RW         1310    .bss.pos_begin      status.o
+    0x20000528        -       0x00000004   Zero   RW          768    .bss.uwTick         stm32f4xx_hal.o
+    0x2000052c        -       0x00000004   Zero   RW          157    .bss.wait_count     stm32f4xx_it.o
+    0x20000530        -       0x00000004   Zero   RW           30    .bss.wait_finish    main.o
+    0x20000534        -       0x00000004   Zero   RW           31    .bss.wait_flag      main.o
+    0x20000538        -       0x00000004   Zero   RW           32    .bss.wait_sec       main.o
+    0x2000053c   0x08007374   0x00000004   PAD
+    0x20000540        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f407xx.o
+    0x20000740        -       0x00000200   Zero   RW            1    STACK               startup_stm32f407xx.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x08007290, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x08007378, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -3251,32 +3326,33 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      2184         72          0          0         20       2605   chassis.o
-       466          0          0          0          0       2247   gpio.o
-       294          0          0          0          0       3198   hiic.o
-       696          0          0          0        252       5711   i2c.o
-      1178         32          0          5        188       8382   main.o
+      2184         72          0          0         20       2609   chassis.o
+       466          0          0          0          0       2251   gpio.o
+       294          0          0          0          0       3202   hiic.o
+       696          0          0          0        252       5715   i2c.o
+      1182         32          0          5        188       8387   main.o
       1170         72          0          0          8       1743   pid.o
-      1898        144          0          0          0       2718   sensor.o
+      1898        144          0          0          0       2722   sensor.o
         36          8        392          0       1024        840   startup_stm32f407xx.o
-       612          8          0          4          0       4949   steppermotor.o
-       270          0          0          5          4       7107   stm32f4xx_hal.o
-       482          0          0          0          0       9718   stm32f4xx_hal_cortex.o
-       996          0          0          0          0       5092   stm32f4xx_hal_gpio.o
-      3346          0          0          0          0      37681   stm32f4xx_hal_i2c.o
-        74          0          0          0          0       1473   stm32f4xx_hal_msp.o
-      2612          0          0          0          0       7596   stm32f4xx_hal_rcc.o
-      5786         14          0          0          0      36001   stm32f4xx_hal_tim.o
-       484          0          0          0          0      15332   stm32f4xx_hal_tim_ex.o
-       690          8          0         20         44       2404   stm32f4xx_it.o
-        18          0         24          4          0       2503   system_stm32f4xx.o
-      3208          0          0          0        720      12078   tim.o
-       332          0          0          0         31       2298   ultrasonic.o
+       218          0          0          0         12       2629   status.o
+       612          8          0          4          0       4981   steppermotor.o
+       270          0          0          5          4       7111   stm32f4xx_hal.o
+       482          0          0          0          0       9722   stm32f4xx_hal_cortex.o
+       996          0          0          0          0       5096   stm32f4xx_hal_gpio.o
+      3346          0          0          0          0      37685   stm32f4xx_hal_i2c.o
+        74          0          0          0          0       1477   stm32f4xx_hal_msp.o
+      2612          0          0          0          0       7600   stm32f4xx_hal_rcc.o
+      5786         14          0          0          0      36005   stm32f4xx_hal_tim.o
+       484          0          0          0          0      15336   stm32f4xx_hal_tim_ex.o
+       690          8          0         20         44       2408   stm32f4xx_it.o
+        18          0         24          4          0       2507   system_stm32f4xx.o
+      3208          0          0          0        720      12082   tim.o
+       332          0          0          0         35       2302   ultrasonic.o
 
     ----------------------------------------------------------------------
-     26940        358        448         44       2300     171676   Object Totals
+     27168        362        448         44       2316     174410   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       108          0          0          6          9          0   (incl. Padding)
+       114          4          0          6          9          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3333,15 +3409,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     28824        396        448         52       2300     172460   Grand Totals
-     28824        396        448         52       2300     172460   ELF Image Totals
-     28824        396        448         52          0          0   ROM Totals
+     29052        400        448         52       2316     175174   Grand Totals
+     29052        400        448         52       2316     175174   ELF Image Totals
+     29052        400        448         52          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                29272 (  28.59kB)
-    Total RW  Size (RW Data + ZI Data)              2352 (   2.30kB)
-    Total ROM Size (Code + RO Data + RW Data)      29324 (  28.64kB)
+    Total RO  Size (Code + RO Data)                29500 (  28.81kB)
+    Total RW  Size (RW Data + ZI Data)              2368 (   2.31kB)
+    Total ROM Size (Code + RO Data + RW Data)      29552 (  28.86kB)
 
 ==============================================================================
 
