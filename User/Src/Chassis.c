@@ -13,18 +13,14 @@ extern uint32_t timer[];
 extern uint32_t Stop_flag[];
 extern uint32_t Stop_All_flag;
 extern float Move_Time[];
-extern uint32_t Rotation_flag;
 extern enum Trace_Dir Trace_flag;
-extern uint32_t Left_flag;
-extern uint32_t Right_flag;
-extern uint32_t Back_flag;
-extern uint32_t Forward_flag;
 extern uint32_t Forward_dis;
 extern uint32_t Left_dis;
 extern uint32_t Right_dis;
 extern uint32_t Back_dis;
 extern float Rotation_Degree;
 extern float Car_Speed;
+Move_Status Move_status = no;
 
 uint32_t id[] = {1, 2, 3, 4};
 
@@ -91,14 +87,18 @@ void Stop_All()
 	{
 		Move_Time[0] -= 0.05 * Move_Time[0];
 		Move_Time[1] -= 0.05 * Move_Time[1];
-		Move_Time[2] = 0;
-		if (Move_Time[0] <= 0.01)
+		Move_Time[2] -= 0.05 * Move_Time[2];
+		if (fabs(Move_Time[0]) <= 0.01)
 		{
 			Move_Time[0] = 0;
 		}
-		if (Move_Time[1] <= 0.01)
+		if (fabs(Move_Time[1]) <= 0.01)
 		{
 			Move_Time[1] = 0;
+		}
+		if (fabs(Move_Time[2]) <= 0.01)
+		{
+			Move_Time[2] = 0;
 		}
 		Trace_flag = NO;
 		if (Move_Time[0] == 0 && Move_Time[1] == 0)
@@ -160,7 +160,7 @@ void Start_Trace()
 // 旋转固定角度，0为逆时针，1为顺时针
 void Rotation_Deg(float Degree, uint32_t dir)
 {
-	if (Rotation_flag == 1)
+	if (Move_status == Rotation_flag)
 	{
 		if (dir == 0)
 		{
@@ -183,7 +183,7 @@ void Rotation_Deg(float Degree, uint32_t dir)
 // 向后走固定距离
 void Get_Back(uint32_t dis)
 {
-	if (Back_flag == 1)
+	if (Move_status == Back_flag)
 	{
 		Back_dis = dis;
 		Move_Time[0] = -0.3;
@@ -195,7 +195,7 @@ void Get_Back(uint32_t dis)
 // 向右走固定距离
 void Go_Right(uint32_t dis)
 {
-	if (Right_flag == 1)
+	if (Move_status == Right_flag)
 	{
 		Right_dis = dis;
 		Move_Time[0] = 0;
@@ -207,7 +207,7 @@ void Go_Right(uint32_t dis)
 // 向左走固定距离
 void Go_Left(uint32_t dis)
 {
-	if (Left_flag == 1)
+	if (Move_status == Left_flag)
 	{
 		Left_dis = dis;
 		Move_Time[0] = 0;
@@ -219,7 +219,7 @@ void Go_Left(uint32_t dis)
 // 向前走固定距离
 void Go_Forward(uint32_t dis)
 {
-	if (Forward_flag == 1)
+	if (Move_status == Forward_flag)
 	{
 		Forward_dis = dis;
 		Move_Time[0] = 0.3;

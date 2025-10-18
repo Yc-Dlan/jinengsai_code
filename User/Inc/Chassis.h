@@ -2,6 +2,16 @@
 #define __CHASSIS_H__
 #include "main.h"
 
+typedef enum
+{
+	no,
+    Back_flag,
+    Rotation_flag,
+    Right_flag,
+    Forward_flag,
+    Left_flag,
+} Move_Status;
+
 void Go(float Vx, float Vy, float Vw);
 void Stop(uint32_t id);
 void Stop_All();

@@ -44,7 +44,7 @@ void Ultrasonic_Trig_front(void)
 
     HAL_GPIO_WritePin(ultrasonic_trig_front_GPIO_Port, ultrasonic_trig_front_Pin, GPIO_PIN_SET);
 
-    for (volatile int i = 0; i < 84; i++)
+    for (volatile int i = 0; i < 100; i++)
     {
         __NOP();
     } // 约10us延迟
@@ -65,7 +65,7 @@ void Ultrasonic_Trig_left(void)
 
     HAL_GPIO_WritePin(ultrasonic_trig_left_GPIO_Port, ultrasonic_trig_left_Pin, GPIO_PIN_SET);
 
-    for (volatile int i = 0; i < 84; i++)
+    for (volatile int i = 0; i < 100; i++)
     {
         __NOP();
     } // 约10us延迟
@@ -86,7 +86,7 @@ void Ultrasonic_Trig_right(void)
 
     HAL_GPIO_WritePin(ultrasonic_trig_right_GPIO_Port, ultrasonic_trig_right_Pin, GPIO_PIN_SET);
 
-    for (volatile int i = 0; i < 84; i++)
+    for (volatile int i = 0; i < 100; i++)
     {
         __NOP();
     } // 约10us延迟

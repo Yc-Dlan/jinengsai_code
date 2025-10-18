@@ -26,4 +26,4 @@ jinengsai/hiic.o: ..\User\Src\Hiic.c ..\User\Inc\Hiic.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Core\Inc\i2c.h ..\Core\Inc\main.h ..\User\Inc\Pid.h \
   ..\User\Inc\Chassis.h ..\User\Inc\Ultrasonic.h ..\User\Inc\Status.h \
-  ..\User\Inc\Sensor.h
+  ..\User\Inc\StepperMotor.h ..\User\Inc\Sensor.h

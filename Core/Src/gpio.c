@@ -52,19 +52,16 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MOTOR_5_DIR_GPIO_Port, MOTOR_5_DIR_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, ultrasonic_trig_left_Pin|MOTOR_5_DIR_Pin|ultrasonic_trig_front_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MOTOR_2_DIR_GPIO_Port, MOTOR_2_DIR_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, MOTOR_DIR_1_Pin|MOTOR_DIR_4_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, ultrasonic_trig_front_Pin|ultrasonic_trig_left_Pin|ultrasonic_trig_right_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MOTOR_DIR_3_GPIO_Port, MOTOR_DIR_3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, ultrasonic_trig_right_Pin|MOTOR_DIR_3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : receive_left_Pin receive_front_Pin */
   GPIO_InitStruct.Pin = receive_left_Pin|receive_front_Pin;
@@ -72,19 +69,19 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MOTOR_5_DIR_Pin */
-  GPIO_InitStruct.Pin = MOTOR_5_DIR_Pin;
+  /*Configure GPIO pins : ultrasonic_trig_left_Pin MOTOR_5_DIR_Pin ultrasonic_trig_front_Pin */
+  GPIO_InitStruct.Pin = ultrasonic_trig_left_Pin|MOTOR_5_DIR_Pin|ultrasonic_trig_front_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(MOTOR_5_DIR_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MOTOR_2_DIR_Pin */
-  GPIO_InitStruct.Pin = MOTOR_2_DIR_Pin;
+  /*Configure GPIO pin : PC5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(MOTOR_2_DIR_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : MOTOR_DIR_1_Pin MOTOR_DIR_4_Pin */
   GPIO_InitStruct.Pin = MOTOR_DIR_1_Pin|MOTOR_DIR_4_Pin;
@@ -93,25 +90,18 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ultrasonic_trig_front_Pin ultrasonic_trig_left_Pin ultrasonic_trig_right_Pin */
-  GPIO_InitStruct.Pin = ultrasonic_trig_front_Pin|ultrasonic_trig_left_Pin|ultrasonic_trig_right_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
   /*Configure GPIO pin : receive_right_Pin */
   GPIO_InitStruct.Pin = receive_right_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(receive_right_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MOTOR_DIR_3_Pin */
-  GPIO_InitStruct.Pin = MOTOR_DIR_3_Pin;
+  /*Configure GPIO pins : ultrasonic_trig_right_Pin MOTOR_DIR_3_Pin */
+  GPIO_InitStruct.Pin = ultrasonic_trig_right_Pin|MOTOR_DIR_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(MOTOR_DIR_3_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
 }
 

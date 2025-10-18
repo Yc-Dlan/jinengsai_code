@@ -76,14 +76,14 @@ float Speed_Correction(void)
 		{
 			f += -0.275;
 		}
-		if (Sensor_Front[0] == 0)
-		{
-			f += 0.35;
-		}
-		if (Sensor_Front[7] == 0)
-		{
-			f += -0.35;
-		}
+		// if (Sensor_Front[0] == 0)
+		// {
+		// 	f += 0.35;
+		// }
+		// if (Sensor_Front[7] == 0)
+		// {
+		// 	f += -0.35;
+		// }
 	}
 	else if (Trace_flag == Right)
 	{
@@ -111,14 +111,14 @@ float Speed_Correction(void)
 		{
 			f += -0.275;
 		}
-		if (Sensor_Right[0] == 0)
-		{
-			f += 0.35;
-		}
-		if (Sensor_Right[7] == 0)
-		{
-			f += -0.35;
-		}
+		// if (Sensor_Right[0] == 0)
+		// {
+		// 	f += 0.35;
+		// }
+		// if (Sensor_Right[7] == 0)
+		// {
+		// 	f += -0.35;
+		// }
 	}
 	else if (Trace_flag == Left)
 	{
@@ -146,14 +146,14 @@ float Speed_Correction(void)
 		{
 			f += -0.275;
 		}
-		if (Sensor_Left[0] == 0)
-		{
-			f += 0.35;
-		}
-		if (Sensor_Left[7] == 0)
-		{
-			f += -0.35;
-		}
+		// if (Sensor_Left[0] == 0)
+		// {
+		// 	f += 0.35;
+		// }
+		// if (Sensor_Left[7] == 0)
+		// {
+		// 	f += -0.35;
+		// }
 	}
 	f = f*Car_Speed/0.3;
 	if (fabsf(f) <= 0.0001)
@@ -188,10 +188,10 @@ int Detect_Line_F(uint32_t count)
 		}
 		if (cross == 3)
 		{
-			Car_Speed = 0.1;
-			if (wait_fun(0.7))
+			Car_Speed = CARSPEED/2;
+			if (wait_fun(1))
 			{
-				Car_Speed = 0.2;
+				Car_Speed = CARSPEED;
 				cross = 0;
 			}
 		}
@@ -230,10 +230,10 @@ int Detect_Line_L(uint32_t count)
 		}
 		if (cross == 3)
 		{
-			Car_Speed = 0.1;
+			Car_Speed = CARSPEED/2;
 			if (wait_fun(0.7))
 			{
-				Car_Speed = 0.2;
+				Car_Speed = CARSPEED;
 				cross = 0;
 			}
 		}
@@ -272,10 +272,10 @@ int Detect_Line_R(uint32_t count)
 		}
 		if (cross == 3)
 		{
-			Car_Speed = 0.1;
+			Car_Speed = CARSPEED/2;
 			if (wait_fun(0.7))
 			{
-				Car_Speed = 0.2;
+				Car_Speed = CARSPEED;
 				cross = 0;
 			}
 		}

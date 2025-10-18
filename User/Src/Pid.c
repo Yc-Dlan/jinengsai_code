@@ -61,17 +61,17 @@ void Motor_pid()
 	V += GetPID(V, V + correction, &Car_pid);
 	if (Trace_flag == Forward)
 	{
-		Move_Time[1] = V*0.08;
+		Move_Time[1] = V*0.09;
 	}
 	if (Trace_flag == Left)
 	{
-		Move_Time[0] = -V*0.14;
+		Move_Time[0] = -V*0.05;
 	}
 	if (Trace_flag == Right)
 	{
-		Move_Time[0] = V*0.14;
+		Move_Time[0] = V*0.05;
 	}
-	Move_Time[2] = V*0.65;
+	Move_Time[2] = V*0.7;
 	if (correction == 0)
 	{
 		Move_Time[2] = 0;

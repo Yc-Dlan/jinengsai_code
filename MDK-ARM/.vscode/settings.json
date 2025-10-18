@@ -5,6 +5,7 @@
         "ultrasonic.h": "c",
         "main.h": "c",
         "pid.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "status.h": "c"
     }
 }

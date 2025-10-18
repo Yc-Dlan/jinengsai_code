@@ -11,14 +11,10 @@ extern TIM_HandleTypeDef *htim[];
 extern uint32_t timer[];
 extern uint32_t run_flag;
 extern uint32_t Go_flag;
-extern uint32_t Back_flag;
-extern uint32_t Right_flag;
-extern uint32_t Left_flag;
-extern uint32_t Rotation_flag;
 extern uint32_t arm_num;
 
+uint32_t target_pulses = 0;
 uint32_t arm_flag = 1;
-int angle;
 extern float arm_speed;
 extern uint32_t arm_dir;
 
@@ -28,7 +24,7 @@ void Set_Motor_Speed(uint32_t id, float time, uint32_t dir)
 	Motor_r = (Motor *)malloc(sizeof(Motor));
 	if (time >= 0)
 	{
-		if (id == 1 || id == 2)
+		if (id == 1 || id == 2 || id == 4)
 		{
 			Motor_r->dir = 0;
 		}
@@ -39,7 +35,7 @@ void Set_Motor_Speed(uint32_t id, float time, uint32_t dir)
 	}
 	else
 	{
-		if (id == 1 || id == 2)
+		if (id == 1 || id == 2 || id == 4)
 		{
 			Motor_r->dir = 1;
 		}
@@ -91,11 +87,11 @@ void Set_Motor_Speed(uint32_t id, float time, uint32_t dir)
 		Motor_r->htim = &htim4;
 		if (Motor_r->dir == 1)
 		{
-			HAL_GPIO_WritePin(MOTOR_DIR_4_GPIO_PORT, MOTOR_DIR_4_PIN, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(MOTOR_DIR_4_GPIO_PORT, MOTOR_DIR_4_PIN, GPIO_PIN_RESET);
 		}
 		else if (Motor_r->dir == 0)
 		{
-			HAL_GPIO_WritePin(MOTOR_DIR_4_GPIO_PORT, MOTOR_DIR_4_PIN, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(MOTOR_DIR_4_GPIO_PORT, MOTOR_DIR_4_PIN, GPIO_PIN_SET);
 		}
 		break;
 	default:
@@ -121,33 +117,28 @@ void Set_Motor_Speed(uint32_t id, float time, uint32_t dir)
 
 void Set_Angle(float angle)
 {
-	uint32_t dir;
+
 	if (arm_flag == 1)
 	{
-		if (angle >= 0)
-		{
-			dir = 1;
-		}
-		else
-		{
-			dir = 0;
-		}
+		// 设置方向
+		uint32_t dir = (angle >= 0) ? 1 : 0;
+		GPIO_PinState pin_state = (dir == 1) ? GPIO_PIN_SET : GPIO_PIN_RESET;
+		HAL_GPIO_WritePin(MOTOR_DIR_5_GPIO_PORT, MOTOR_DIR_5_PIN, pin_state);
 
-		if (dir == 1)
-		{
-			HAL_GPIO_WritePin(MOTOR_DIR_5_GPIO_PORT, MOTOR_DIR_5_PIN, GPIO_PIN_SET);
-		}
-		else if (dir == 0)
-		{
-			HAL_GPIO_WritePin(MOTOR_DIR_5_GPIO_PORT, MOTOR_DIR_5_PIN, GPIO_PIN_RESET);
-		}
+		// 计算需要的脉冲数（假设1.8度/脉冲，16细分）
+		// 取绝对值，因为方向已单独处理
+		target_pulses = (uint32_t)(fabsf(angle) / 1.8f * 16.0f);
 
-		float arr;
-		arr = 312.5f * 0.08 * 3.1415 / 0.3;
+		// 计算定时器参数（根据你的具体硬件配置调整）
+		// 假设这是计算脉冲频率的参数
+		float arr = 312.5f * 0.08f * 3.1415f / 0.3f * 2;
+
+		// 配置定时器
 		__HAL_TIM_SET_COUNTER(&htim5, 0);
-		__HAL_TIM_SET_AUTORELOAD(&htim5, arr);
-		__HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_2, arr / 2);
-		if (arm_num >= angle / 1.8 * 16)
+		__HAL_TIM_SET_AUTORELOAD(&htim5, (uint32_t)arr);
+		__HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_2, (uint32_t)(arr / 2.0f));
+
+		if (arm_num >= target_pulses)
 		{
 			arm_flag = 0;
 			__HAL_TIM_SET_COUNTER(&htim5, 0);

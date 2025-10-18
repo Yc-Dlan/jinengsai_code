@@ -36,6 +36,7 @@ extern "C" {
 #include "Chassis.h"
 #include "Ultrasonic.h"
 #include "Status.h"
+#include "StepperMotor.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -69,34 +70,32 @@ void Get_right_dis(void);
 #define MOTOR_2_STP_GPIO_Port GPIOA
 #define MOTOR_5_STP_Pin GPIO_PIN_1
 #define MOTOR_5_STP_GPIO_Port GPIOA
-#define receive_left_Pin GPIO_PIN_3
+#define receive_left_Pin GPIO_PIN_2
 #define receive_left_GPIO_Port GPIOA
+#define ultrasonic_trig_left_Pin GPIO_PIN_3
+#define ultrasonic_trig_left_GPIO_Port GPIOA
 #define MOTOR_3_STP_Pin GPIO_PIN_6
 #define MOTOR_3_STP_GPIO_Port GPIOA
 #define MOTOR_5_DIR_Pin GPIO_PIN_7
 #define MOTOR_5_DIR_GPIO_Port GPIOA
-#define MOTOR_2_DIR_Pin GPIO_PIN_5
-#define MOTOR_2_DIR_GPIO_Port GPIOC
 #define MOTOR_DIR_1_Pin GPIO_PIN_7
 #define MOTOR_DIR_1_GPIO_Port GPIOE
 #define MOTOR_1_STP_Pin GPIO_PIN_9
 #define MOTOR_1_STP_GPIO_Port GPIOE
 #define MOTOR_DIR_4_Pin GPIO_PIN_15
 #define MOTOR_DIR_4_GPIO_Port GPIOE
-#define ultrasonic_trig_front_Pin GPIO_PIN_12
-#define ultrasonic_trig_front_GPIO_Port GPIOB
-#define ultrasonic_trig_left_Pin GPIO_PIN_13
-#define ultrasonic_trig_left_GPIO_Port GPIOB
-#define ultrasonic_trig_right_Pin GPIO_PIN_15
-#define ultrasonic_trig_right_GPIO_Port GPIOB
-#define receive_right_Pin GPIO_PIN_9
+#define receive_right_Pin GPIO_PIN_8
 #define receive_right_GPIO_Port GPIOD
+#define ultrasonic_trig_right_Pin GPIO_PIN_9
+#define ultrasonic_trig_right_GPIO_Port GPIOD
 #define MOTOR_DIR_3_Pin GPIO_PIN_11
 #define MOTOR_DIR_3_GPIO_Port GPIOD
 #define MOTOR_4_STP_Pin GPIO_PIN_12
 #define MOTOR_4_STP_GPIO_Port GPIOD
-#define receive_front_Pin GPIO_PIN_10
+#define receive_front_Pin GPIO_PIN_9
 #define receive_front_GPIO_Port GPIOA
+#define ultrasonic_trig_front_Pin GPIO_PIN_10
+#define ultrasonic_trig_front_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 enum Trace_Dir
@@ -106,7 +105,7 @@ enum Trace_Dir
   Left,
   Right
 };
-
+#define CARSPEED (float)0.25
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

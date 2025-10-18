@@ -4,7 +4,6 @@
         "ultrasonic.h": "c",
         "status.h": "c",
         "main.h": "c",
-        "limits": "c",
-        "steppermotor.h": "c"
+        "limits": "c"
     }
 }

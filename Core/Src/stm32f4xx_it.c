@@ -36,15 +36,10 @@ extern uint32_t Stop_All_flag;
 extern enum Trace_Dir Trace_flag;
 uint32_t act_flag = 0;
 
-uint32_t Rotation_flag = 0;
-uint32_t Back_flag = 0;
 uint32_t Back_count = 0;
-uint32_t Forward_flag = 0;
 uint32_t Forward_count = 0;
 uint32_t Rotation_count = 0;
-uint32_t Left_flag = 0;
 uint32_t Left_count = 0;
-uint32_t Right_flag = 0;
 uint32_t Right_count = 0;
 uint32_t Right_dis = 100;
 uint32_t Left_dis = 100;
@@ -55,10 +50,11 @@ float Rotation_Degree = 100;
 extern volatile uint8_t Obs_index_front;
 extern volatile uint8_t Obs_index_left;
 extern volatile uint8_t Obs_index_right;
+extern uint32_t target_pulses;
+extern uint32_t arm_flag;
+extern uint32_t arm_num;
+extern Move_Status Move_status;
 
-extern volatile float Obs_distance_front;
-extern volatile float Obs_distance_left;
-extern volatile float Obs_distance_right;
 extern volatile uint32_t Obs_buff_front;
 extern volatile uint32_t Obs_buff_left;
 extern volatile uint32_t Obs_buff_right;
@@ -252,7 +248,7 @@ void TIM5_IRQHandler(void)
   /* USER CODE END TIM5_IRQn 0 */
   HAL_TIM_IRQHandler(&htim5);
   /* USER CODE BEGIN TIM5_IRQn 1 */
-
+  
   /* USER CODE END TIM5_IRQn 1 */
 }
 
@@ -266,60 +262,61 @@ void TIM6_DAC_IRQHandler(void)
   /* USER CODE END TIM6_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
-  Start_Trace();
-  //Car_Status(Status);
-  // 方向函数计时 ↓
-  if (Rotation_flag == 1)
+  // Start_Trace();
+  Car_Status(Status);
+  //  方向函数计时 ↓
+  if (Move_status == Rotation_flag)
   {
     Rotation_count++;
     if (Rotation_count >= 205.0 / 180.0 * Rotation_Degree)
     {
-      Rotation_flag = 0;
+      Move_status = no;
       Rotation_count = 0;
       Stop_All_flag = 1;
     }
   }
-  if (Back_flag == 1)
+  if (Move_status == Back_flag)
   {
     Back_count++;
     if (Back_count >= Back_dis)
     {
-      Back_flag = 0;
+      Move_status = no;
       Back_count = 0;
       Stop_All_flag = 1;
     }
   }
-  if (Forward_flag == 1)
+  if (Move_status == Forward_flag)
   {
     Forward_count++;
     if (Forward_count >= Forward_dis)
     {
-      Forward_flag = 0;
+      Move_status = no;
       Forward_count = 0;
       Stop_All_flag = 1;
     }
   }
-  if (Left_flag == 1)
+  if (Move_status == Left_flag)
   {
     Left_count++;
     if (Left_count >= Left_dis)
     {
-      Left_flag = 0;
+      Move_status = no;
       Left_count = 0;
 
       Stop_All_flag = 1;
     }
   }
-  if (Right_flag == 1)
+  if (Move_status == Right_flag)
   {
     Right_count++;
     if (Right_count >= Right_dis)
     {
-      Right_flag = 0;
+      Move_status = no;
       Right_count = 0;
       Stop_All_flag = 1;
     }
   }
+  
   // 方向函数计时 ↑
   Stop_All();
   if (wait_flag == 1)
@@ -345,7 +342,6 @@ void TIM7_IRQHandler(void)
   /* USER CODE END TIM7_IRQn 0 */
   HAL_TIM_IRQHandler(&htim7);
   /* USER CODE BEGIN TIM7_IRQn 1 */
-  
   /* USER CODE END TIM7_IRQn 1 */
 }
 

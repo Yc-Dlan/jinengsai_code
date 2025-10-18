@@ -1,6 +1,8 @@
 #ifndef __STATUS_H__
 #define __STATUS_H__
 
+#define Pul_Angel 200
+
 typedef enum
 {
 	wait,
@@ -11,6 +13,7 @@ typedef enum
 	right_step,
 	left_step,
 	throw_rotate,
+	finish,
 } Status_ID;
 //up，down代表上层机构的投掷，up-投掷，down-复原
 

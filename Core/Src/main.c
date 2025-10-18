@@ -21,7 +21,7 @@
 #include "i2c.h"
 #include "tim.h"
 #include "gpio.h"
-#include "Status.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -34,15 +34,13 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
-//#define Standard_foot 20 //规定单独一格迷宫的小车移动距离
-
 extern uint32_t arm_flag;
 float ms = 0;
 uint32_t wait_finish = 0;
 uint32_t wait_flag = 0;
 float wait_sec = 0;
 uint32_t arm_num = 0;
+float test_angle = 3; 
 
 uint32_t timer[] = {0, 0, 0, 0};
 uint32_t ii = 0;
@@ -60,11 +58,11 @@ unsigned char Anolog[8] = {0};
 unsigned char rx_buff[256] = {0};
 unsigned char Normal[8] = {0};
 
-enum Trace_Dir Trace_flag = Left;
+enum Trace_Dir Trace_flag = Forward;
 uint32_t flag[] = {0, 0, 0, 0};
 float time[] = {2, 2, 2, 2};
 int get = 0;
-float Car_Speed = 0.2;
+float Car_Speed = CARSPEED;
 
 PID_Typedef Car_pid;
 
@@ -129,7 +127,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  HAL_Delay(100);
+  HAL_Delay(1000);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -148,7 +146,7 @@ int main(void)
   MX_TIM9_Init();
   MX_TIM12_Init();
   /* USER CODE BEGIN 2 */
-  PID_Init(&Car_pid, 0.05, 0.002, 0, 0.7);
+  PID_Init(&Car_pid, 0.04, 0.002, 0, 0.7);
   HAL_TIM_PWM_Init(&htim1);
   HAL_TIM_PWM_Init(&htim2);
   HAL_TIM_PWM_Init(&htim3);
@@ -166,8 +164,8 @@ int main(void)
 
   Ultrasonic_Init();
 
+  HAL_TIM_Base_Start_IT(&htim5);
   HAL_TIM_Base_Start_IT(&htim6);
-  HAL_TIM_Base_Start_IT(&htim7);
 
   /* USER CODE END 2 */
 
@@ -184,9 +182,9 @@ int main(void)
     Get_Sensor(Sensor_Left);
     Get_Front_dis();//获取前方向超声波传感器的值，储存在Obs_distance_front
     Get_Left_dis();//获取左边超声波传感器的值，储存在Obs_distance_left
-    Get_Left_dis();//获取右边超声波传感器的值，储存在Obs_distance_right
+    Get_right_dis();//获取右边超声波传感器的值，储存在Obs_distance_right
     Obstacle_find();
-    //		Go(Move_Time[0],Move_Time[1],Move_Time[2]);
+    //Go(0.2,0,0);
     HAL_Delay(30);
   }
   /* USER CODE END 3 */
@@ -362,7 +360,7 @@ void Get_right_dis(void)
 
     HAL_TIM_IC_Start(&htim12, TIM_CHANNEL_1);
     HAL_TIM_IC_Start(&htim12, TIM_CHANNEL_2);
-    Ultrasonic_Trig_left();
+    Ultrasonic_Trig_right();
     
     Obs_index_left = 0;
     uint32_t expireTime = HAL_GetTick() + 50;
